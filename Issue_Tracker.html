@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SpeedGoat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="user_manual.html">IPM</a>
+</li>
+<li>
+  <a href="Issue_Tracker.html">Issue Tracker</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<center>
+<img src = "www/SG_Horizontal_Transparent_RGB.png">
+</center>
+<div id="issue-tracking-feature-requests" class="section level1">
+<h1>Issue Tracking &amp; Feature Requests</h1>
+<p>PopR is linked to <a href="https://github.com/">GitHub</a> issue tracking. If you have a problem with your software or think of a new feature that would make your life easier the process of telling us about it is simple. While it might be easier to call or write an email we need a <em>to do</em> list in order to provide the service our collaborators deserve. This list of issues and features lets us assign tasks internally and generally manage projects effectively. If you choose to email or call we will create an issue anyway, but you won’t necessarily see our progress on the topic or conversations unless you go to the site and subscribe to or follow the issue. We highly encourage our users to try the Issue tracker. Those who have embraced these tools have found them very useful and provided glowing feedback. In addition, the public repositories that we maintain for each project also have a wiki that houses presentations and other supplementary materials.</p>
+<div id="github" class="section level3">
+<h3>GitHub</h3>
+<p>We use <a href="https://github.com/">GitHub</a> to keep track of versions of our code, back up the code base and facilitate communication. In order to use the tools provided by this amazing website each user needs to create an account. Accounts are free and relatively painless to create. To begin navigate to <a href="https://github.com/">GitHub</a> and <em>click</em> on the Sign up button at the top-right of your screen. Instructions for creating an account can be found <a href="http://www.wikihow.com/Create-an-Account-on-GitHub">here</a>. If you prefer short videos (0:56 seconds) you might find this <a href="https://www.youtube.com/watch?v=ezxRcdJ8glM">link</a> helpful.</p>
+<hr />
+</div>
+<div id="issue-tracking" class="section level3">
+<h3>Issue Tracking</h3>
+<p>The official documentation for the issue tracker can be found <a href="https://guides.github.com/features/issues/">here</a>. Many of the features described in that documentation are not really necessary for our collaborators, but it might be advantageous to become a power user. For those wanting the official quick overview of the issue tracker the video below might be helpful.</p>
+<iframe width="400" height="200" src="https://www.youtube.com/embed/TJlYiMp8FuY" frameborder="0" allowfullscreen>
+</iframe>
+<hr />
+<div style="color:crimson">
+<h2 id="what-you-need-to-know">What you need to know</h2>
+<ol style="list-style-type: decimal">
+<li><em>To begin navigate to the issue tab related to your project</em>
+<ul>
+<li>This page shows you all of the current issues and feature requests for your PopR website. There are also closed issues that you can view by clicking on the word Closed. Issues are organized by date to help you find what you are looking for. If you can’t find what you want you might try searching using the Filters or checking the Closed issues. You can also subset the issues by choosing an Author or Labels.</li>
+</ul></li>
+</ol>
+<h4 id="looking-for-your-issue-page">Looking for your issue page?</h4>
+<ul>
+<li><a href="https://github.com/Huh/PopR_AZGF/issues">Arizona</a></li>
+<li><a href="https://github.com/Huh/PopR_IDFG/issues">Idaho</a></li>
+<li><a href="https://github.com/Huh/PopR_Jasper/issues">Jasper National Park/Alberta</a></li>
+<li><a href="https://github.com/Huh/PopR_MT/issues">Montana</a></li>
+<li><a href="https://github.com/Huh/PopR_SDGFP/issues">South Dakota</a></li>
+<li><a href="https://github.com/Huh/PopR_Sage/issues">WAFWA/Sage Grouse</a></li>
+<li><a href="https://github.com/Huh/PopR_WGFD">Wyoming</a></li>
+</ul>
+<p><br></p>
+<p><img src = "www/Issue_img_issue_tab.png"></p>
+<hr />
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Click on the new Issue Button</em>
+<ul>
+<li>When you click on the new Issue Button you will see a place to describe your issue.</li>
+</ul></li>
+</ol>
+<p><img src = "www/Issue_img_new_issue.png"></p>
+<hr />
+<p><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li><em>Describe your issue or idea</em>
+<ul>
+<li>The best practice when describing your problem or idea is to use specific details. An issue that simple says “website crashed” is not useful because we have no way of knowing what you were doing and so cannot reproduce the problem. If we can reproduce the problem we can fix it. If all user inputs and the issue are described there is a good chance that we can find the problem. Similarly, when describing a new feature please fully describe your vision, the problem it solves and why it is important so that it can be implemented as you imagine.</li>
+</ul></li>
+</ol>
+<p><img src = "www/Issue_img_eg_issue.png"></p>
+<p><br></p>
+<hr />
+<p><br></p>
+<ol start="4" style="list-style-type: decimal">
+<li><em>Click Submit new issue</em>
+<ul>
+<li>Upon clicking the Submit button the whole Speedgoat team will be notified. We will respond as soon as possible to let you know we are aware of the issue.</li>
+</ul></li>
+</ol>
+<p><img src = "www/Issue_img_issue_submit.png"></p>
+</div>
+<hr />
+<p><br></p>
+</div>
+<div id="what-now" class="section level3">
+<h3>What now?</h3>
+<p>Once you have submitted an issue you will be following that issue via email. Following or watching an issue means that you will receive an email each time something is posted about the issue. For example, you might receive a question asking for clarification or an explanation as to why the issue occurred. It is also likely that you will see the issue has been given labels and assigned to someone at SpeedGoat to fix or implement. If you would like to reply to a follow up question you can do so right from your email or you can view the issue on GitHub by following the link in the email.</p>
+<p><img src = "www/SG_Horizontal_Transparent_RGB.png"
+  height = "122" width = "162"></p>
+<p><br></p>
+<p>Speedgoat Website: <a href="https://www.speedgoat.io">www.speedgoat.io</a></p>
+<hr />
+</div>
+<div id="josh-nowak-paul-lukacs" class="section level3">
+<h3>Josh Nowak &amp; Paul Lukacs</h3>
+<p>Emails:</p>
+<p><a href="mailto:josh.nowak@speedgoat.io?Subject=PopR%20again" target="_top">josh.nowak@speedgoat.io</a></p>
+<p><a href="mailto:paul.lukacs@speedgoat.io?Subject=PopR%20again" target="_top">paul.lukacs@speedgoat.io</a></p>
+<p>GitHub handles:</p>
+<p>Josh: <a href="https://github.com/Huh">Huh</a></p>
+<p>Paul: <a href="https://github.com/paul-lukacs">Paul-Lukacs</a></p>
+<p><br></p>
+<div style="padding-bottom:100px">
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

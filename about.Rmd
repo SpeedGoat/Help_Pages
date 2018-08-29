@@ -1,0 +1,43 @@
+---
+title: ""
+author: ""
+output:
+  html_document:
+    toc: false
+    theme: flatly
+---
+
+<center>
+  <img src = "./www/SG_Horizontal_Transparent_RGB.png">
+</center>
+
+<br>
+
+### SpeedGoat
+
+SpeedGoat is a one-stop shop for maximizing information gained from hard-earned data. We listen to wildlife professionals so we can build customized tools that provide the information needed to make difficult decisions, automate tedious tasks and defend management actions. We emphasize data accessibility, transparency and repeatable analyses.  PopR is the realization of this vision.  We consider PopR a workflow management system.  PopR manages all data transactions and manipulations while allowing cutting-edge statistical tools to act on data.
+
+### People
+[About Josh and Paul...](https://www.speedgoat.io/story/)
+
+Website:
+
+[www.speedgoat.io](www.speedgoat.io)
+
+Emails:
+
+<a href="mailto:josh.nowak@speedgoat.io?Subject=PopR%20again" target="_top">josh.nowak@speedgoat.io</a> 
+
+<a href="mailto:paul.lukacs@speedgoat.io?Subject=PopR%20again" target="_top">paul.lukacs@speedgoat.io</a> 
+  
+GitHub handles: 
+
+Josh: [Huh](https://github.com/Huh)
+
+Paul: [Paul-Lukacs](https://github.com/paul-lukacs)
+
+Cell:
+
+Josh: (406) 214-7666
+
+<br>
