@@ -41,6 +41,7 @@ The official documentation for the issue tracker can be found [here](https://gui
 
 #### Looking for your issue page?
 - [Arizona](https://github.com/Huh/PopR_AZGF/issues)
+- [CWD Monitoring](https://github.com/Huh/PopR_CWD/issues)
 - [Idaho](https://github.com/Huh/PopR_IDFG/issues)
 - [Jasper National Park/Alberta](https://github.com/Huh/PopR_Jasper/issues)
 - [Montana](https://github.com/Huh/PopR_MT/issues)
