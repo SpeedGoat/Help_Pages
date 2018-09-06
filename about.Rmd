@@ -13,11 +13,11 @@ output:
 
 <br>
 
-### SpeedGoat
+## SpeedGoat
 
 SpeedGoat is a one-stop shop for maximizing information gained from hard-earned data. We listen to wildlife professionals so we can build customized tools that provide the information needed to make difficult decisions, automate tedious tasks and defend management actions. We emphasize data accessibility, transparency and repeatable analyses.  PopR is the realization of this vision.  We consider PopR a workflow management system.  PopR manages all data transactions and manipulations while allowing cutting-edge statistical tools to act on data.
 
-### People
+## People
 [About Josh and Paul...](https://www.speedgoat.io/story/)
 
 Website:
