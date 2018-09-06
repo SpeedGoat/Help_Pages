@@ -282,11 +282,32 @@ div.tocify {
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="user_manual.html">IPM</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Manuals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="user_manual.html">IPM</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jasper_ipm_description.html">Caribou</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="Issue_Tracker.html">Issue Tracker</a>
+  <a href="Issue_Tracker.html">Issues</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -311,14 +332,14 @@ div.tocify {
 <img src = "www/SG_Horizontal_Transparent_RGB.png">
 </center>
 <p><br> <br></p>
-<div id="popr-user-manual" class="section level1">
-<h1>PopR User Manual</h1>
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="popr-user-manual" class="section level2">
+<h2>PopR User Manual</h2>
+<div id="overview" class="section level3">
+<h3>Overview</h3>
 <p>SpeedGoat is a one-stop shop for maximizing information gained from hard-earned data. We listen to wildlife professionals so we can build customized tools that provide the information needed to make difficult decisions, automate tedious tasks and defend management actions. We emphasize data accessibility, transparency and repeatable analyses. PopR is the realization of this vision. We consider PopR a workflow management system. PopR manages all data transactions and manipulations while allowing cutting-edge statistical tools to act on data.</p>
 </div>
-<div id="use-cases" class="section level2">
-<h2>Use Cases</h2>
+<div id="use-cases" class="section level3">
+<h3>Use Cases</h3>
 <ol style="list-style-type: decimal">
 <li>How many animals should be harvested to achieve management objectives?
 <ul>
@@ -331,26 +352,26 @@ div.tocify {
 </ol>
 <p>There are many uses for the webiste beyond running the integrated population models and more tools are being developed all the time. For example, many of the plots and tables can be downloaded to aid in custom report building. If you have an idea of a tool you would like to see in PopR please post your idea to our issue tracker detailed in the Help section of this document.</p>
 </div>
-<div id="location" class="section level2">
-<h2>Location</h2>
+<div id="location" class="section level3">
+<h3>Location</h3>
 <p>PopR is a collection of web based tools that can be accessed through <a href="https://www.speedgoat.io">www.speedgoat.io</a>. The tool can be accessed by any web browser with an internet connection.</p>
 </div>
-<div id="navigation" class="section level2">
-<h2>Navigation</h2>
+<div id="navigation" class="section level3">
+<h3>Navigation</h3>
 <p>Once the user arrives at their PopR website a sidebar will appear. The sidebar allows users to navigate among screens by simple mouse clicks. The structure of this document follows the structure of the website using sidebar tabs and sub-tabs as section headings. Please note that each site is unique and this document is general, so tabs may or may not be present in your particular implementation.</p>
 </div>
-<div id="home" class="section level2">
-<h2>Home</h2>
+<div id="home" class="section level3">
+<h3>Home</h3>
 <p>This is a simple landing page that has no function at this time.</p>
 </div>
-<div id="ipm" class="section level2">
-<h2>IPM</h2>
+<div id="ipm" class="section level3">
+<h3>IPM</h3>
 <p>The IPM tab is where the majority of work will be done. Clicking on this tab will cause sub-items to appear or disappear, but does not perform a function beyond making the sub-items visible.</p>
-<div id="setup" class="section level3">
-<h3>Setup</h3>
+<div id="setup" class="section level4">
+<h4>Setup</h4>
 <p>Once a user has clicked on the IPM tab the Setup sub-item will be available for selection. Clicking on Setup brings the user to the IPM setup screen. On this screen the user will see three major boxes of information. The top left box is reserved for user inputs while the top right box holds graphical displays of data and the lower box shows tabular data inputs. All information on the screen are <em>inputs</em> to the IPM.</p>
-<div id="top-left-box" class="section level4">
-<h4>Top-Left Box</h4>
+<div id="top-left-box" class="section level5">
+<h5>Top-Left Box</h5>
 <p>The box in the top left of the screen holds widgets the user can manipulate to change model inputs and structure. The user is required to navigate through each of the box items (denoted by numbers 1 through 4).</p>
 <ol style="list-style-type: decimal">
 <li><p>Overview - Basic model setup inputs</p>
@@ -383,8 +404,8 @@ div.tocify {
 </ul></li>
 </ol>
 </div>
-<div id="top-right-box" class="section level4">
-<h4>Top-Right Box</h4>
+<div id="top-right-box" class="section level5">
+<h5>Top-Right Box</h5>
 <p>The top-right box shows the user models inputs as plots.</p>
 <ul>
 <li>Harvest - The harvest plot shows age by sex observed and future harvest.</li>
@@ -394,50 +415,50 @@ div.tocify {
 <li>Priors - The prior plot is an interactive plot that allows the user to view the initial guess formed via the literature and/or expert opinion. The model combines the prior and the data to arrive at the final solution.</li>
 </ul>
 </div>
-<div id="bottom-box" class="section level4">
-<h4>Bottom Box</h4>
+<div id="bottom-box" class="section level5">
+<h5>Bottom Box</h5>
 <p>The box at the bottom of the screen shows model inputs in a tabular fashion. Note the tables can be manipulated in a number of ways. Columns can be sorted by clicking on the small arrows to the right of the column label. Columns can be filtered to certain values by typing in the space below the column heading. Rows may be selected by clicking on the desired entry. The buttons above and to the right of the table provide a means of copying the table to the user’s clipboard, printing the table and hiding columns to customize the appearance of the table.</p>
 <ul>
 <li>Tabular model inputs mimic the order and definition of the plots described in the top-right box.</li>
 </ul>
 </div>
 </div>
-<div id="plots" class="section level3">
-<h3>Plots</h3>
+<div id="plots" class="section level4">
+<h4>Plots</h4>
 <p>A screen to visually display the estimates from the model. The screen is organized by 4 major types of parameter estimates. The top-left box displays abundance estimates. Ratio estimates appear at top-right of the screen. Survival estimates for Females and Males can be viewed in the bottom-left of the screen. The bottom-right box shows miscellaneous plots such as population growth rate.</p>
-<div id="top-left-box-abundance" class="section level4">
-<h4>Top-Left Box (Abundance)</h4>
+<div id="top-left-box-abundance" class="section level5">
+<h5>Top-Left Box (Abundance)</h5>
 <ul>
 <li>Total - The total tab shows plots of the total number of animals estimated in the population. Smaller light brown dots represent field counts.</li>
 <li>Female/Male - When the female or male tab is selected a plot of just the selected sex can be viewed. The age of the animals being displayed is controlled by the dropdown widget at the top-left.</li>
 </ul>
 </div>
-<div id="top-right-box-ratios" class="section level4">
-<h4>Top-Right Box (Ratios)</h4>
+<div id="top-right-box-ratios" class="section level5">
+<h5>Top-Right Box (Ratios)</h5>
 <ul>
 <li>Age - A plot of age ratios derived from the model estimates.</li>
 <li>Sex - A plot of the sex ratios derived from the model estimates.</li>
 </ul>
 </div>
-<div id="bottom-left-survival" class="section level4">
-<h4>Bottom-Left (Survival)</h4>
+<div id="bottom-left-survival" class="section level5">
+<h5>Bottom-Left (Survival)</h5>
 <ul>
 <li>Female - A time-series plot of female survival. The dropdown widget above the plot allows for each age group to be shown individually.</li>
 <li>Male - Same as the female plots.</li>
 </ul>
 </div>
-<div id="bottom-right-misc" class="section level4">
-<h4>Bottom-Right (Misc)</h4>
+<div id="bottom-right-misc" class="section level5">
+<h5>Bottom-Right (Misc)</h5>
 <ul>
 <li>Growth Rate - A time-series plot of population growth rate.</li>
 </ul>
 </div>
 </div>
-<div id="tables" class="section level3">
-<h3>Tables</h3>
+<div id="tables" class="section level4">
+<h4>Tables</h4>
 <p>Clicking on the Tables tab will display a table of all the model parameters. Note the tables can be manipulated in a number of ways. Columns can be sorted by clicking on the small arrows to the right of the column label. Columns can be filtered to certain values by typing in the space below the column heading. Rows may be selected by clicking on the desired entry. The buttons above and to the right of the table provide a means of copying the table to the user’s clipboard, printing the table and hiding columns to customize the appearance of the table.</p>
-<div id="column-descriptions" class="section level4">
-<h4>Column Descriptions</h4>
+<div id="column-descriptions" class="section level5">
+<h5>Column Descriptions</h5>
 <ul>
 <li>Parameter - The name of the estimated parameter</li>
 <li>DAU - The spatial area of the analysis, Data Analysis Unit</li>
@@ -457,8 +478,8 @@ div.tocify {
 </div>
 </div>
 </div>
-<div id="help" class="section level2">
-<h2>Help</h2>
+<div id="help" class="section level3">
+<h3>Help</h3>
 <p>The primary means of getting help with PopR problems, enhancements and changes is through our issue tracking system. More information can be found clicking on the Issue Tracker link above. To create a new issue you may need to create a free GitHub account first. Once you have an account simple click the large green New Issue button to get started. When you click on the button the Title and Leave a comment boxes allow you to describe your issue or idea. Please be as thorough as you possibly can when describing issues. The issue tracker also uses Markdown if you happen to be familiar. If your needs are more immediate you can contact us at</p>
 <p>Website:</p>
 <p><a href="www.speedgoat.io" class="uri">www.speedgoat.io</a></p>
