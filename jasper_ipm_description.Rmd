@@ -1,0 +1,58 @@
+---
+title: ""
+author: "Anna Moeller, Josh Nowak & Paul Lukacs"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    theme: flatly
+---
+
+<center>
+  <img src = "./www/SG_Horizontal_Transparent_RGB.png">
+</center>
+
+
+<br>
+<br>
+
+## Caribou IPM Description
+
+We developed a model that uses all available data to estimate vital rates and population size for the endangered Tonquin herd in Jasper National Park. This integrated population model (IPM) allowed us to incorporate all available data since 2001 into a single, coherent picture of the population.  In addition, we were able to incorporate relevant biology into the modeling process to produce self-consistent estimates of multiple population parameters. From a management perspective, the model allows for proactive evaluation management strategies.
+
+### Basic Biological Assumptions
+
+Because all data surveys were conducted during the autumn, we defined the model year from October 1 to September 30. This means the model anniversary is October 1 and all estimates reference this date. In terms of population structure, the relatively slow reproduction of Caribou prompted us to define four age classes.  We defined these age classes as follows: 
+
+- Y, young of year (0.5 year)
+- J, juvenile (1.5 years)
+- S, subadult (2.5 years)
+- A, adult (≥3.5 years)
+
+### Reproduction
+
+When estimating reproduction, we assumed that female caribou do not reproduce until their third year of life. Although it may be likely that some proportion of younger animals also reproduce, we do not have data to support this notion. Because twinning is exceedingly rare in caribou, we assumed that females only gave birth to one calf during parturition. Data informing reproduction were calf:cow ratios collected by aerial survey. Because female and male caribou can both have antlers, it can be difficult to distinguish them in the field. It can also be difficult to distinguish juveniles, subadults, and adults in the field. However, at the time of the survey, only adult female caribou should have calves. This means that raw ratios were only reflective of the average contribution of juvenile, subadult, and adult caribou to the population, even though only the adult class had bred the year before. In the model, we separated out these influences and derived a ratio of young to adult females while simultaneously accounting for the difficulties associated with uniquely identifying the various sex and age classes.
+
+### Survival
+
+To model caribou survival and mortality, we assumed that subadult and adult caribou survival vary predictably around some constant mean but that juvenile survival varies more drastically between years.  We used a known-fate model that accounted for temporal variability with a random effect of month.  This suggests that each month has a unique mean (among years) and that each year by month combination can further be unique if there is sufficient data to suggest moving away from the mean value.  Using random effects to model the temporal and/or spatial differences in vital rates is supported by arguments for parsimony where we seek to simultaneously bolster sample sizes by sharing information while allowing for differences. 
+
+### Abundance
+
+We estimated abundance of each sex and age class from the number of animals the previous year and their survival rate. We derived lambda based on the abundance estimate of a given year and the year before. 
+
+### Translocations
+
+To analyze the impact of translocations to bolster the caribou herds, we built an editable table that the user can adjust to add individuals in certain years in the future. Post-translocation survival depression (PTSD) has been reported in many translocated ungulate studies, in which survival is much lower for translocated individuals than that of resident animals. We allow the user to adjust the level of PTSD as a proportion of wild survival for that age class. We modeled reintroduction as occurring immediately after surveys are performed, assuming that even if individuals were released before surveys, they would be marked to differentiable.
+
+### Data
+
+Data sources: 
+•	Aerial mark-recapture on collared adult females for survival and abundance
+•	Monthly survival of VHF-collared adult females
+•	Aerial minimum population counts 
+•	Aerial calf:cow ratios
+•	Non-invasive DNA data for survival and abundance 
