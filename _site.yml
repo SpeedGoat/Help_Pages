@@ -9,6 +9,8 @@ navbar:
       menu:
         - text: "IPM"
           href: user_manual.html
+        - text: "Survival"
+          href: survival_manual.html
     - text: "Models"
       menu:
         - text: "Caribou"

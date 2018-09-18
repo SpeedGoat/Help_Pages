@@ -9,6 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Josh Nowak &amp; Paul Lukacs" />
 
 
 <title></title>
@@ -19,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -166,6 +170,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -232,13 +331,31 @@ $(document).ready(function () {
 </div>
 
 
-<div id="help-pages" class="section level1">
-<h1>Help Pages</h1>
-<p>This repository exists to host documentation related to Speedgoat products, such as PopR. The repository really only serves up the webpage at <a href="https://SpeedGoat.github.io/" class="uri">https://SpeedGoat.github.io/</a></p>
+<center>
+<img src = "www/SG_Horizontal_Transparent_RGB.png">
+</center>
+<p><br> <br></p>
+<hr />
+<div id="help" class="section level3">
+<h3>Help</h3>
+<p>The primary means of getting help with PopR problems, enhancements and changes is through our issue tracking system. More information can be found clicking on the Issue Tracker link above. To create a new issue you may need to create a free GitHub account first. Once you have an account simple click the large green New Issue button to get started. When you click on the button the Title and Leave a comment boxes allow you to describe your issue or idea. Please be as thorough as you possibly can when describing issues. The issue tracker also uses Markdown if you happen to be familiar. If your needs are more immediate you can contact us at</p>
+<p>Website:</p>
+<p><a href="www.speedgoat.io" class="uri">www.speedgoat.io</a></p>
+<p>Emails:</p>
+<p><a href="mailto:josh.nowak@speedgoat.io?Subject=PopR%20again" target="_top">josh.nowak@speedgoat.io</a></p>
+<p><a href="mailto:paul.lukacs@speedgoat.io?Subject=PopR%20again" target="_top">paul.lukacs@speedgoat.io</a></p>
+<p>GitHub handles:</p>
+<p>Josh: <a href="https://github.com/Huh">Huh</a></p>
+<p>Paul: <a href="https://github.com/paul-lukacs">Paul-Lukacs</a></p>
+<p>Cell:</p>
+<p>Josh: (406) 214-7666</p>
+<p><br></p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

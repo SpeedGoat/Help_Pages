@@ -1,0 +1,48 @@
+---
+title: ""
+author: "Josh Nowak & Paul Lukacs"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    theme: flatly
+---
+
+<center>
+  <img src = "./www/SG_Horizontal_Transparent_RGB.png">
+</center>
+
+
+<br>
+<br>
+
+***
+
+### Help
+
+The primary means of getting help with PopR problems, enhancements and changes is through our issue tracking system.  More information can be found clicking on the Issue Tracker link above.  To create a new issue you may need to create a free GitHub account first.  Once you have an account simple click the large green New Issue button to get started.  When you click on the button the Title and Leave a comment boxes allow you to describe your issue or idea.  Please be as thorough as you possibly can when describing issues.  The issue tracker also uses Markdown if you happen to be familiar.  If your needs are more immediate you can contact us at
+
+Website:
+
+[www.speedgoat.io](www.speedgoat.io)
+
+Emails:
+
+<a href="mailto:josh.nowak@speedgoat.io?Subject=PopR%20again" target="_top">josh.nowak@speedgoat.io</a> 
+
+<a href="mailto:paul.lukacs@speedgoat.io?Subject=PopR%20again" target="_top">paul.lukacs@speedgoat.io</a> 
+  
+GitHub handles: 
+
+Josh: [Huh](https://github.com/Huh)
+
+Paul: [Paul-Lukacs](https://github.com/paul-lukacs)
+
+Cell:
+
+Josh: (406) 214-7666
+
+<br>
