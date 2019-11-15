@@ -29,12 +29,16 @@ Emails:
 <a href="mailto:josh.nowak@speedgoat.io?Subject=PopR%20again" target="_top">josh.nowak@speedgoat.io</a> 
 
 <a href="mailto:paul.lukacs@speedgoat.io?Subject=PopR%20again" target="_top">paul.lukacs@speedgoat.io</a> 
+
+<a href="mailto:eric.newkirk@speedgoat.io?Subject=PopR%20again" target="_top">eric.newkirk@speedgoat.io</a>
   
 GitHub handles: 
 
 Josh: [Huh](https://github.com/Huh)
 
 Paul: [Paul-Lukacs](https://github.com/paul-lukacs)
+
+Eric: [eric.newkirk](https://github.com/ericnewkirk)
 
 Cell:
 

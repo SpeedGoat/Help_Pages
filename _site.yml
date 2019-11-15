@@ -11,12 +11,12 @@ navbar:
           href: user_manual.html
         - text: "Survival"
           href: survival_manual.html
+        - text: "Asana"
+          href: asana.html
     - text: "Models"
       menu:
         - text: "Caribou"
           href: jasper_ipm_description.html
-    - text: "Issues"
-      href: Issue_Tracker.html
     - text: "About"
       href: about.html
 output:
