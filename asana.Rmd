@@ -10,9 +10,9 @@ output:
       smooth_scroll: true
     theme: flatly
 ---
-<center>
-  <img src = "./www/SG_Horizontal_Transparent_RGB.png">
-</center>
+
+<br>
+<br>
 
 # Project Management
 
@@ -76,12 +76,13 @@ Our Asana boards are private to those individuals involved in a contract/relatio
 
 The help documentation for Asana can be found at [https://asana.com/guide](https://asana.com/guide).
 
+***
+
+Developed by Josh Nowak, [SpeedGoat](https://www.speedgoat.io)
 
 <img src = "./www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162">
 
 <br>
-
-Speedgoat Website: [www.speedgoat.io](https://www.speedgoat.io)
 
 ***
 

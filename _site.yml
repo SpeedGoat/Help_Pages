@@ -11,6 +11,8 @@ navbar:
           href: user_manual.html
         - text: "Survival"
           href: survival_manual.html
+        - text: "CWD"
+          href: cwd.html
         - text: "Asana"
           href: asana.html
     - text: "Models"

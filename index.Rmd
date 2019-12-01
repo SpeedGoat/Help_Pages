@@ -12,11 +12,17 @@ output:
 </center>
 
 <br>
+<br>
 
 ## What We Do
 
-At SpeedGoat, we build customized, server-based computer software that makes statistical models and anlytics more approachable and helps bridge the gap between the biologists with mud on their boots and the computer geeks with three monitors each (that's us).  Our overall goal is to provide consistency and transparency for our collaborators, so that agency biologists can spend more time thinking about biology and less about spreadsheets.
+At SpeedGoat, we build customized, server-based computer software that makes statistical models and analytics more approachable and helps bridge the gap between the biologists with mud on their boots and the computer geeks with three monitors each. Our overall goal is to provide consistency and transparency for our collaborators, so that agency biologists can spend more time thiking about biology and less about spreadsheets.
 
-## Purpose
+## This Site
 
-The purpose of this webpage is to provide a common place to host documentation related to SpeedGoat products.  Here you will find pages relating to tabs in your software such as IPM and Survival, but also tabs that help users navigate GitHub and the tools within that we use.
+The purpose of this webpage is to provide a common place to host documentation related to SpeedGoat products.  Here you will find pages relating to tabs in your software such as IPM and Survival, but also tabs that help users navigate Asana, GitHub and other tools used in our projects.
+
+## Questions/Feedback
+
+You can contact us through our website at <www.speedgoat.io> or directly email Josh at josh.nowak@speedgoat.io
+

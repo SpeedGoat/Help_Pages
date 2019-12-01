@@ -91,14 +91,13 @@ The official documentation for the issue tracker can be found [here](https://gui
 
 Once you have submitted an issue you will be following that issue via email.  Following or watching an issue means that you will receive an email each time something is posted about the issue.  For example, you might receive a question asking for clarification or an explanation as to why the issue occurred.  It is also likely that you will see the issue has been given labels and assigned to someone at SpeedGoat to fix or implement.  If you would like to reply to a follow up question you can do so right from your email or you can view the issue on GitHub by following the link in the email.
 
+***
 
+Developed by Josh Nowak, [SpeedGoat](https://www.speedgoat.io)
 
-<img src = "./www/SG_Horizontal_Transparent_RGB.png"
-  height = "122" width = "162">
+<img src = "./www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162">
 
 <br>
-
-Speedgoat Website: [www.speedgoat.io](https://www.speedgoat.io)
 
 ***
 
