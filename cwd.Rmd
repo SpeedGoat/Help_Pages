@@ -6,57 +6,180 @@ output:
     toc: true
     toc_depth: 3
     toc_float:
-      collapsed: true
+      collapsed: false
       smooth_scroll: true
     theme: flatly
 ---
 
 <br>
+
+# Weighted Surveillance
+
 <br>
 
-## Chronic Wasting Disease Weighted Surveillance
+## Introduction
 
-This application provides an easy-to-use interface for conducting weighted surveillance for chronic wasting disease (CWD). At the moment the tools focus on white-tailed deer _Odocoileus virginianus_ populations, but other species and tools are under development. Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](http://www.bioone.org/doi/pdf/10.7589/0090-3558-46.1.118) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
+This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. At the moment the tools focus on white-tailed deer (*Odocoileus virginianus*) populations, but other species and tools are under development.
 
-This application provides tools for planning sampling and estimating underlying prevelance after sampling has been completed. Each tool is represented by a tab at left in the dashboard and can be accessed by clicking on the CWD tab. 
+Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](http://www.bioone.org/doi/pdf/10.7589/0090-3558-46.1.118) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
 
-The first tool called **Design**, is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in yearling males (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requiste number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date. 
+The first tool called **Design**, is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in yearling males (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requisite number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date.
 
-The second tool called **Estimation** is for use after sampling for CWD detection has occurred and no positive cases were found. It provides the means to estimate the potential underlying prevalence rate of CWD given the amount of samples collected during surveillance. Of particular interest is the upper bound of the credible interval. If the disease is present in the system, it provides the prevalence rate for which there is, for example, a 95% probability the true prevalence is below. 
+The second tool called **Estimation** is for use after sampling for CWD detection has occurred and no positive cases were found. It provides the means to estimate the potential underlying prevalence rate of CWD given the number of negative samples collected during surveillance. Of particular interest is the upper bound of the credible interval, which means there is, for example, a 95% probability that true prevalence is at or below the reported level given your sampling effort and lack of cases detected.
 
-The techniques and theory underpinning them used in this application are described in [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). This application takes advantage of the [R](https://www.R-project.org/) statistical software for estimation. Heterogeneity of risk classes are based on the chronic wasting disease information collected by the [Wisconsin Department of Nautral Resources](https://dnr.wi.gov/topic/wildlifehabitat/regulations.html). [Jennelle et al. 2018](https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13178) provide a description of the Wisconsin estimates and provide a case study of the application of weighted surveillance to CWD detection.
+It's important to note that these tools are entirely independent - you can use either one however you wish but there's no need to use both, and changes made in one tool won't have any affect in the other.
+
+The techniques and theory underpinning them used in this application are described in [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). This application takes advantage of the [R](https://www.R-project.org/) statistical software for estimation. Heterogeneity of risk classes are based on the chronic wasting disease information collected by the [Wisconsin Department of Natural Resources](https://dnr.wi.gov/topic/wildlifehabitat/regulations.html). [Jennelle et al. 2018](https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13178) provide a description of the Wisconsin estimates and provide a case study of the application of weighted surveillance to CWD detection.
+
+<br>
 
 ## Help
 
-Every input a user can manipulate and every title/heading has a corresponding popup or tooltip that can be accessed by hovering your mouse over the desired element. If you have trouble with the site and would like to ask for help you can contact Josh, the site's maintainer, by clicking on the lifering in the top-right of your screen. If you ever have a problem with the site you can issue a *bug report* by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a *feature request*. The help icons are shown in the image below:
+Blue question marks in the various sections of the app link directly to the relevant sections of this document. If you have trouble with the site or have questions that aren't covered here you can contact Josh, the site's maintainer, by clicking on the lifering in the top-right of your screen. You can also issue a *bug report* by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a *feature request*. The help icons are shown in the image below:
 
-<img src = "./www/cwd_design_page_input_help.png">
+<img src = "./www/cwd_help.png">
 
-*This website has documentation that suggests you should issue bug requests through Asana for our projects, but for opensource projects we track bug reports and feature requests using GitHub.*
+<br>
+<br>
 
-## Design Tab
+## Design Tool
 
-To begin using the Design tool click on CWD and then Design, which will cause the application page to appear. You should now see this page:
+The **Design** tool is used for planning weighted surveillance activities. If you've already collected your samples and just want to analyze the results you can skip the design tab and go straight to the [estimation tab](#estimation-tab).  
 
-<img src = "./www/cwd_design_page_input1.png">
+To begin using the **Design** tool click on CWD and then Design in the sidebar.
 
-In the page above you can see a red box with the number 1 in the middle of it. This box highlights three sliders that are used to set the target number of points for the surveillance, which as the box title suggests implies a risk tolerance. The slider functions are as follows:
+<img src = "./www/cwd_design.png">
 
-1) Confidence - Use this slider to set the confidence you desire for detecting at least one case if the prevalence is equal to 0.05 in the harvested yearling males. The confidence level can also be thought of as 1 - alpha.
-2) Prevalence - This slider is used to specify the minimum target prevalence in harvested yearling males for which you would like a 0.95 confidence of detecting at least one case.
-3) Sensitivity - The last slider is used to specify the dianostic test sensitivity, which is typically assumed to be 1 unless live-testing is conducted.
+<br>
 
-While moving the sliders you should notice that the value displayed in the *Target Points* box at the top of the screen keeps adjusting. This box is shown in this image:
+### Design Setup
 
-<img src = "./www/cwd_design_page_input2.png">
+The setup pane on the Design tab allows you to specify the monitoring goals of your surveillance program. It includes three sliders which can be used to set target sampling effort based on the desired outcome.
 
-The values in the boxes highlighted in the above image will update according the user inputs. When moving the sliders the *Target Points* value will adjust and when entering values in the table the *Collected Points* and *Difference* boxes will update.
+<img src = "./www/cwd_design_setup.png">
 
-Once the user is happy with their risk level they can move to the *Monitoring Data Entry* table. 
+Hunter-harvested yearling males are used as the reference class throughout the site (see [Points](#points)), and the selections you make in the Setup pane will be applied to that class. The slider functions are as follows:
 
-<img src = "./www/cwd_design_page_input_tbl.png">
+1) Confidence - Use this slider to set the confidence you desire for detecting at least one case given the selected prevalence. The confidence level can also be thought of as 1 - alpha.
+2) Prevalence - Use this slider to set the minimum target prevalence for which you would like the specified confidence of detecting at least one case.
+3) Sensitivity - The last slider is used to specify the diagnostic test sensitivity, which is typically assumed to be 1 unless live-testing is conducted.
 
-This table reflects the Collection Method, Age and Sex of data used to create priors for the species of interest. While users cannot edit the first three columns of the table it is critical that the Samples column is edited to reflect the desired sampling method(s) and effort. To edit the table, double-click on the cell you wish to edit, enter the number of animals you propose to sample and then press Enter to submit your entry. When the Sample column is edited the Collected Points value box at the top of the page will update along with the top-right box, which will let the user know how many more points are required. Similarly, the pie chart will update to give the user a sense of distribution of effort by method.
+For example, using the default values the target points will be based on having a 95% confidence of detecting at least one case given a latent prevalence of 0.05 in hunter-harvested yearling males.
+
+<br>
+
+### Points
+
+While moving the sliders in the input pane you should notice that the value displayed in the *Target Points* box at the top of the screen changes.
+
+<img src = "./www/cwd_pts.png">
+
+The *Target Points* value represents the number of samples you would need to collect from the reference class (hunter-harvested yearling males) in order to achieve the goals you set in the input tab. Using the defaults in the setup pane, for example, you would need 58 samples from hunter-harvested yearling males to achieve 95% confidence of detection given a prevalence rate of 0.05.  
+
+Samples from other classes are weighted differently in the model and therefore will contribute more or less to hitting your target.
+
+<br>
+
+### Effort Data Entry
+
+<img src = "./www/cwd_design_tbl.png">
+
+The *Sampling Effort* table displays the Collection Method, Age and Sex of classes available in the model, along with the weights (relative to the reference class) assigned to each class. Enter the number of samples you propose to collect for each class in the last column and the *Points Entered* and *Points Remaining* boxes at the top of the screen will update. Along with the gauge widget on the right side, these boxes reflect how the sampling effort you've entered relates to your monitoring target. You can also explore how the different collection methods and demographic groups contribute to achieving your monitoring target using the donut charts at the bottom right of the page.
+
+<br>
+<br>
+
+## Estimation Tool
+
+The **Estimation** tool is used to estimate the potential underlying prevalence rate of CWD after sampling has occurred and no positive cases were found.
+
+To begin using the **Estimation** tool click on CWD and then Estimation in the sidebar.
+
+<img src = "./www/cwd_est.png">
+
+<br>
+
+### Sampling Data Entry
+
+Use the pane on the left side to enter information about the samples you collected.
+
+<img src = "./www/cwd_est_de.png">
+
+First select the species and collection method near the top. Depending on the collection method additional options regarding age and sex of subjects may become available. Then select the appropriate options for your test characteristics - described in more detail [below](#test-characteristics). Finally enter the number of samples you collected for the given collection method and click the *Add Observation* button to add these samples to your dataset.
+
+Data you add through these inputs will appear in the *Samples* table in the main pane. If you make a mistake or change your mind you can select one or more rows in the table and use the *Delete Selected Rows* button to remove them from the dataset, or you can *Delete All Rows* to start over.
+
+<img src = "./www/cwd_est_tbl.png">
+
+<br>
+
+### Test Characteristics
+
+The following methods are available for generating a posterior distibution for the test characteristics.
+
+1. The 'Default' method uses the posterior distributions of the sensitivity and specificity based on the results in Vet Rec 151:610-612 for IHC on retropharyngeal lymph nodes and a Jeffreys prior (i.e., mean sensitiviy = 98.6% and mean specificity >99%).
+
+2. The 'Use data' method allows the user to specify their results for each test, and requires the number of true and false positives and negatives. The posterior distributions for the test characteristics are then  estimated using a Jeffreys prior.
+
+3. The 'Quantile' method allows the user to specify the mean and 95% credible bounds for the posterior distribution of the test characteristics. These are used to generate a suitable Beta distribution.
+
+Test characteristics apply can vary by collection method, age, and sex if needed, e.g. in cases where different tests are used depending on the collection method or when test characteristics vary based on the age or sex of the subject.
+
+You can preview the distributions created based on your inputs by clicking the *Tests* tab above the main panel.
+
+<br>
+
+### MCMC
+
+You can adjust model settings using the *MCMC* tab in the data entry section. Number of chains, burn-in length, and model iterations can all be adjusted if needed.
+
+<img src = "./www/cwd_est_mcmc.png">
+
+<br>
+
+### Priors
+
+As of writing the priors available to the model are fixed and cannot be manipulated by the user. Data are based on chronic wasting disease information collected by the [Wisconsin Department of Natural Resources](https://dnr.wi.gov/topic/wildlifehabitat/regulations.html). You can view the data by clicking the *Priors* tab in the main panel.
+
+<br>
+
+### Running the model
+
+When you've entered the appropriate information for each group of samples collected, checked that everything looks right in the *Samples* table, and adjusted the model settings in the *MCMC* tab if needed, click the *Fit Model* button (top of the left pane) to fit a model for your data. After a short time you'll be prompted with a message letting you know if the model run was successful. If so a new *Output* tab will appear in the sidebar where you can view your results.
+
+<br>
+<br>
+
+## Output Tab
+
+The *Output* tab is only available after you've entered data in the [Estimation tab](estimation-tool) and clicked the button to fit a model.
+
+<br>
+
+### Estimates Table
+
+The estimates table displays model outputs (estimated latent prevalence) for all classes (Collection Method/Age/Sex) in a single table. Mean, median, standard deviation, and confidence intervals (90% and 95%) are reported for each class.
+
+<img src = "./www/cwd_output_tbl.png">
+
+<br>
+
+### Output Plots
+
+The plots page shows a probability density plot for estimated latent prevalence of CWD by class, along with a trace plot for diagnosing model performance. Change the data displayed in either plot by using the dropdown below the plot to select a different class.
+
+<img src = "./www/cwd_output_plots.png">
+
+<br>
+
+### Interpretation
+
+The interpretation page provides some guidance for explaining the model output with regard to your actual population. By default the reference class (hunter-harvested yearling males) is displayed, but you can also view an interpretation for a different class by changing the selection in the dropdown near the top of the page.
+
+<img src = "./www/cwd_output_interp.png">
+
+<br>
+<br>
 
 ## Suggestions
 
