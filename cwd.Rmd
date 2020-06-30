@@ -153,7 +153,7 @@ The *Output* tab is only available after you've entered data in the [Samples tab
 
 ### Estimates Table
 
-The estimates table displays model outputs (estimated latent prevalence) for all classes (Collection Method/Age/Sex) in a single table. Mean, median, standard deviation, and confidence intervals (90% and 95%) are reported for each class. Rows are color coded based on the number of samples entered for each class.
+The estimates table displays model outputs (estimated latent prevalence) for all classes (Collection Method/Age/Sex) in a single table. Mean, median, standard deviation, and credible intervals (90% and 95%) are reported for each class. Rows are color coded based on the number of samples entered for each class.
 
 <img src = "./www/weightedsurveil/cwd_output_tbl.png">
 
@@ -161,7 +161,7 @@ The estimates table displays model outputs (estimated latent prevalence) for all
 
 ### Output Plots
 
-The plots page shows a probability density plot for estimated latent prevalence of CWD by class, along with trace and autocorrelation plots for diagnosing model performance. Change the data displayed by using the dropdown below the plot to select a different class. You can download all density plots as image files or in a single pdf using the *Download All* button.
+The plots page shows a posterior distribution plot for estimated latent prevalence of CWD by class, along with trace and autocorrelation plots for diagnosing model performance. Change the data displayed by using the dropdown below the plot to select a different class. Use the buttons and sliders near the various plots to zoom in to a finer scale or save a plot as an image file. You can also download all density plots in a single click using the *Download All* button.
 
 <img src = "./www/weightedsurveil/cwd_output_plots.png">
 
