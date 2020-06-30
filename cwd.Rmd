@@ -1,6 +1,7 @@
 ---
 title: ""
 author: ""
+pagetitle: "SpeedGoat Help"
 output:
   html_document:
     toc: true
@@ -35,7 +36,7 @@ The techniques and theory underpinning them used in this application are describ
 
 ## Help
 
-Blue question marks in the various sections of the app link directly to the relevant sections of this document. If you have trouble with the site or have questions that aren't covered here you can contact Josh, the site's maintainer, by clicking on the lifering in the top-right of your screen. You can also issue a *bug report* by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a *feature request*. The help icons are shown in the image below:
+Blue question marks in the various sections of the app link directly to the relevant sections of this document. If you have trouble with the site or have questions that aren't covered here you can contact Josh, the site's maintainer, by clicking on the lifering in the top-right of your screen. You can also issue a [*bug report*]("https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&labels=bug&template=bug_report.md&title=") by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a [*feature request*]("https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&labels=&template=feature_request.md&title="). The help icons are shown in the image below:
 
 <img src = "./www/cwd_help.png">
 
