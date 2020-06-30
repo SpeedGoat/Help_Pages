@@ -23,9 +23,9 @@ This application provides tools for planning weighted surveillance sampling for 
 
 Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](https://cpw.state.co.us/Documents/Research/WildlifeHealth/Publications/WeightedSurveillanceApproachCWD.pdf) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
 
-The first tool called **Design**, is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in the group selected as a reference class (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requisite number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date.
+The first tool, called [**Design**](#design-tool), is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in the group selected as a reference class (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requisite number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date.
 
-The second tool called **Estimation** is for use after sampling for CWD detection has occurred and no positive cases were found. It provides the means to estimate the potential underlying prevalence rate of CWD given the number of negative samples collected during surveillance. Of particular interest is the upper bound of the credible interval, which means there is, for example, a 95% probability that true prevalence is at or below the reported level given your sampling effort and lack of cases detected.
+The second tool, called [**Estimation**](#estimation-tool), is for use after sampling for CWD detection has occurred and no positive cases were found. It provides the means to estimate the potential underlying prevalence rate of CWD given the number of negative samples collected during surveillance. Of particular interest is the upper bound of the credible interval, which means there is, for example, a 95% probability that true prevalence is at or below the reported level given your sampling effort and lack of cases detected.
 
 It's important to note that these tools are entirely independent - you can use either one however you wish but there's no need to use both, and changes made in one tool won't have any affect in the other.
 
@@ -44,7 +44,7 @@ Blue question marks in the various sections of the app link directly to the rele
 
 ## Design Tool
 
-The **Design** tool is used for planning weighted surveillance activities. If you've already collected your samples and just want to analyze the results you can skip the design tab and go straight to the [estimation tab](#estimation-tab).  
+The **Design** tool is used for planning weighted surveillance activities. If you've already collected your samples and just want to analyze the results you can skip the design tab and go straight to the [Estimation tool](#estimation-tool).  
 
 To begin using the **Design** tool click on CWD and then Design in the sidebar.
 
@@ -133,7 +133,7 @@ Data you add through these inputs will appear in the *Entered Data* table to the
 
 You can adjust model settings using the *MCMC* button at the bottom of the Samples tab. Number of chains, burn-in length, and model iterations can all be adjusted if needed.
 
-As of writing the priors available to the model are fixed and cannot be manipulated by the user. Data are based on chronic wasting disease information collected by the [Wisconsin Department of Natural Resources](https://dnr.wi.gov/topic/wildlifehabitat/regulations.html). You can view the data by clicking the *Priors* button.
+As of writing the priors available to the model are fixed and cannot be manipulated by the user. Data are based on chronic wasting disease information collected by the [Wisconsin Department of Natural Resources](https://dnr.wi.gov/topic/wildlifehabitat/cwd.html). You can view the data by clicking the *Priors* button.
 
 <br>
 
@@ -146,7 +146,7 @@ When you've entered the appropriate information for each group of samples collec
 
 ## Output Tab
 
-The *Output* tab is only available after you've entered data in the [Estimation tab](estimation-tool) and clicked the button to fit a model.
+The *Output* tab is only available after you've entered data in the [Samples tab](#sampling-data-entry) and clicked the button to fit a model.
 
 <br>
 
@@ -183,7 +183,7 @@ If you have suggestions or corrections that you would like to propose to this do
 
 Developed by Josh Nowak, [SpeedGoat](https://www.speedgoat.io)
 
-<img src = "./www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162">
+[<img src = "./www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162">](https://www.speedgoat.io)
 
 <br>
 
