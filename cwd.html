@@ -525,6 +525,11 @@ div.tocify {
 <p><img src = "www/weightedsurveil/cwd_output_interp.png"></p>
 <p><br> <br></p>
 </div>
+<div id="report" class="section level3">
+<h3>Report</h3>
+<p>Click the <em>Download Report</em> button to generate an html report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots.</p>
+<p><br> <br></p>
+</div>
 </div>
 <div id="suggestions" class="section level2">
 <h2>Suggestions</h2>
@@ -591,7 +596,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
