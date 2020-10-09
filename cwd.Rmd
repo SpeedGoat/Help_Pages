@@ -178,6 +178,13 @@ The interpretation page provides some guidance for explaining the model output w
 <br>
 <br>
 
+### Report
+
+Click the *Download Report* button to generate an html report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots.
+
+<br>
+<br>
+
 ## Suggestions
 
 If you have suggestions or corrections that you would like to propose to this document please either file a bug report at [this link](https://github.com/SpeedGoat/DiseaseMonitoring) or make a contribution and issue a pull request via the [Huh/Help_Pages](https://github.com/SpeedGoat/Help_Pages) GitHub repository.
