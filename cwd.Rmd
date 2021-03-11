@@ -20,7 +20,8 @@ output:
 
 ## Introduction
 
-This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. At the moment the tools focus on white-tailed deer (*Odocoileus virginianus*) populations, but other species and tools are under development.
+This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. Models are available for white-tailed deer (*Odocoileus virginianus*), 
+mule deer (*Odocoileus hemionus*), and elk (*Cervus canadensis*) populations, and an additional model allows combining samples from elk and mule deer in a single analysis.
 
 Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](https://cpw.state.co.us/Documents/Research/WildlifeHealth/Publications/WeightedSurveillanceApproachCWD.pdf) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
 
@@ -132,13 +133,13 @@ Data you add through these inputs will appear in the *Entered Data* table to the
 
 ### Model Settings
 
-You can adjust model settings using the *MCMC* button at the bottom of the Samples tab. Number of chains, burn-in length, and model iterations can all be adjusted if needed.
+If you enter enter samples from elk or mule deer an additional dropdown will appear allowing you to choose between a single-species model or a combined model. You can adjust model settings using the *MCMC* button at the bottom of the Samples tab. Number of chains, burn-in length, and model iterations can all be adjusted if needed.
 
-As of writing the priors available to the model are fixed and cannot be manipulated by the user. Data are based on chronic wasting disease information collected by the [Wisconsin Department of Natural Resources](https://dnr.wi.gov/topic/wildlifehabitat/cwd.html). You can view the data by clicking the *Priors* button.
+As of writing the priors available to the models are fixed and cannot be manipulated by the user. Heterogeneity of risk classes are based on the chronic wasting disease information described in [Jennelle et al. 2018](https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13178) and [Walsh et al. 2012](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).  The former provides a description of the Wisconsin estimates and a recent case study of the application of weighted surveillance to CWD detection. You can view the data by clicking the *Priors* button.
 
 <br>
 
-### Running the model
+### Running a model
 
 When you've entered the appropriate information for each group of samples collected, checked that everything looks right in the *Samples* table, and adjusted the model settings if needed, click the *Fit Model* button  to fit a model for your data. After a short time you'll be prompted with a message letting you know if the model run was successful. If so a new *Output* tab will appear in the sidebar where you can view your results.
 
@@ -180,7 +181,7 @@ The interpretation page provides some guidance for explaining the model output w
 
 ### Report
 
-Click the *Download Report* button to generate an html report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots.
+Click the *Download Report* button to generate a full report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots. Reports are available in html and Microsoft Word formats.
 
 <br>
 <br>
