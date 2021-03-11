@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="" />
 
 
 <title>SpeedGoat Help</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -26,6 +26,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -71,6 +80,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -415,7 +425,7 @@ div.tocify {
 <p><br></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. At the moment the tools focus on white-tailed deer (<em>Odocoileus virginianus</em>) populations, but other species and tools are under development.</p>
+<p>This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. Models are available for white-tailed deer (<em>Odocoileus virginianus</em>), mule deer (<em>Odocoileus hemionus</em>), and elk (<em>Cervus canadensis</em>) populations, and an additional model allows combining samples from elk and mule deer in a single analysis.</p>
 <p>Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by <a href="https://cpw.state.co.us/Documents/Research/WildlifeHealth/Publications/WeightedSurveillanceApproachCWD.pdf">Walsh et al. (2010)</a> using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843">Heisey et al. (2014)</a>. It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in <a href="https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf">Walsh et al. (2012)</a>.</p>
 <p>The first tool, called <a href="#design-tool"><strong>Design</strong></a>, is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in the group selected as a reference class (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requisite number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date.</p>
 <p>The second tool, called <a href="#estimation-tool"><strong>Estimation</strong></a>, is for use after sampling for CWD detection has occurred and no positive cases were found. It provides the means to estimate the potential underlying prevalence rate of CWD given the number of negative samples collected during surveillance. Of particular interest is the upper bound of the credible interval, which means there is, for example, a 95% probability that true prevalence is at or below the reported level given your sampling effort and lack of cases detected.</p>
@@ -492,12 +502,12 @@ div.tocify {
 </div>
 <div id="model-settings" class="section level3">
 <h3>Model Settings</h3>
-<p>You can adjust model settings using the <em>MCMC</em> button at the bottom of the Samples tab. Number of chains, burn-in length, and model iterations can all be adjusted if needed.</p>
-<p>As of writing the priors available to the model are fixed and cannot be manipulated by the user. Data are based on chronic wasting disease information collected by the <a href="https://dnr.wi.gov/topic/wildlifehabitat/cwd.html">Wisconsin Department of Natural Resources</a>. You can view the data by clicking the <em>Priors</em> button.</p>
+<p>If you enter enter samples from elk or mule deer an additional dropdown will appear allowing you to choose between a single-species model or a combined model. You can adjust model settings using the <em>MCMC</em> button at the bottom of the Samples tab. Number of chains, burn-in length, and model iterations can all be adjusted if needed.</p>
+<p>As of writing the priors available to the models are fixed and cannot be manipulated by the user. Heterogeneity of risk classes are based on the chronic wasting disease information described in <a href="https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13178">Jennelle et al. 2018</a> and <a href="https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf">Walsh et al. 2012</a>. The former provides a description of the Wisconsin estimates and a recent case study of the application of weighted surveillance to CWD detection. You can view the data by clicking the <em>Priors</em> button.</p>
 <p><br></p>
 </div>
-<div id="running-the-model" class="section level3">
-<h3>Running the model</h3>
+<div id="running-a-model" class="section level3">
+<h3>Running a model</h3>
 <p>When you’ve entered the appropriate information for each group of samples collected, checked that everything looks right in the <em>Samples</em> table, and adjusted the model settings if needed, click the <em>Fit Model</em> button to fit a model for your data. After a short time you’ll be prompted with a message letting you know if the model run was successful. If so a new <em>Output</em> tab will appear in the sidebar where you can view your results.</p>
 <p><br> <br></p>
 </div>
@@ -527,7 +537,7 @@ div.tocify {
 </div>
 <div id="report" class="section level3">
 <h3>Report</h3>
-<p>Click the <em>Download Report</em> button to generate an html report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots.</p>
+<p>Click the <em>Download Report</em> button to generate a full report of your data. The report includes all of the test and sample data you entered, the settings used, and the output tables and plots. Reports are available in html and Microsoft Word formats.</p>
 <p><br> <br></p>
 </div>
 </div>
@@ -557,7 +567,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
