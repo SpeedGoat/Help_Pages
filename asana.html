@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -13,27 +12,41 @@
 <meta name="author" content="" />
 
 
-<title>asana.utf8</title>
+<title>asana.knit</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -46,32 +59,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 
 
@@ -82,13 +71,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -102,40 +86,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h2 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h3 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h4 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h5 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
-.section h6 {
-  padding-top: 65px;
-  margin-top: -65px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -163,7 +123,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -175,7 +135,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -185,11 +145,28 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.parent().addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -201,13 +178,12 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -215,16 +191,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -237,6 +206,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -265,6 +235,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -320,7 +296,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -334,7 +310,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -347,28 +323,34 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Manuals
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="user_manual.html">IPM</a>
+      <a href="01-ipm.html">IPM</a>
     </li>
     <li>
-      <a href="survival_manual.html">Survival</a>
+      <a href="02-sight.html">Sightability</a>
+    </li>
+    <li>
+      <a href="03-surv.html">Survival</a>
+    </li>
+    <li>
+      <a href="04-dataentry.html">Data Entry</a>
     </li>
     <li>
       <a href="cwd.html">CWD</a>
     </li>
     <li>
-      <a href="asana.html">Asana</a>
+      <a href="05-glossary.html">Glossary</a>
     </li>
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Models
      
     <span class="caret"></span>
@@ -390,7 +372,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -401,13 +383,21 @@ div.tocify {
 <p><br> <br></p>
 <div id="project-management" class="section level1">
 <h1>Project Management</h1>
-<p>At SpeedGoat we want to work with our collaborators. One of our biggest challenges is understand the dynamic schedules and needs of our collaborators. To this end, we have invested in managing our projects transparently in <a href="https://asana.com/product">Asana</a>. Our goal here is to help increase transparency, communication and organization related to projects.</p>
+<p>At SpeedGoat we want to work with our collaborators. One of our
+biggest challenges is understand the dynamic schedules and needs of our
+collaborators. To this end, we have invested in managing our projects
+transparently in <a href="https://asana.com/product">Asana</a>. Our goal
+here is to help increase transparency, communication and organization
+related to projects.</p>
 <div id="short-version" class="section level2">
 <h2>Short Version</h2>
 <ul>
-<li>Each agency/collaborator is a Team, Team’s have Projects, Projects have Tasks, Tasks tell us when and what work to do</li>
-<li>Tasks can be prioritized by position, tags, due dates and comments, please change</li>
-<li>Create tasks by duplicating template tasks in project boards (e.g. Feature Requests)</li>
+<li>Each agency/collaborator is a Team, Team’s have Projects, Projects
+have Tasks, Tasks tell us when and what work to do</li>
+<li>Tasks can be prioritized by position, tags, due dates and comments,
+please change</li>
+<li>Create tasks by duplicating template tasks in project boards
+(e.g. Feature Requests)</li>
 <li>Fill out tasks by following template instructions</li>
 <li>You will invite your team to the board, not us</li>
 <li>The boards are private</li>
@@ -416,46 +406,114 @@ div.tocify {
 </ul>
 <div id="teams" class="section level3">
 <h3>Teams</h3>
-<p>Our collaborations are first organized by <em>Teams</em>, which typically reference an agency or entity. For example, there is a team for everyone from Idaho and another for folks from South Dakota. Within each team we will create <em>Projects</em>.</p>
+<p>Our collaborations are first organized by <em>Teams</em>, which
+typically reference an agency or entity. For example, there is a team
+for everyone from Idaho and another for folks from South Dakota. Within
+each team we will create <em>Projects</em>.</p>
 </div>
 <div id="projects" class="section level3">
 <h3>Projects</h3>
-<p>Projects come in two forms, those with definitive start and end dates and those that are persistent. Specific contracts to build a model or some workflow are good examples of a project with definitive start and end dates. On the other hand, each team always has at least two persistent projects named <em>Feature Requests</em> and <em>Bug Tracking</em>, described in more detail below. Clicking on a project will expose the board related to that topic or work. Within this page the user will see a series of tabs at the top of the screen. The Board view is our favorite, here you will find columns such as To Do, Backlog, Prioritized, In Progress, and Done. These columns provide a quick visual check of the state of tasks within the project.</p>
+<p>Projects come in two forms, those with definitive start and end dates
+and those that are persistent. Specific contracts to build a model or
+some workflow are good examples of a project with definitive start and
+end dates. On the other hand, each team always has at least two
+persistent projects named <em>Feature Requests</em> and <em>Bug
+Tracking</em>, described in more detail below. Clicking on a project
+will expose the board related to that topic or work. Within this page
+the user will see a series of tabs at the top of the screen. The Board
+view is our favorite, here you will find columns such as To Do, Backlog,
+Prioritized, In Progress, and Done. These columns provide a quick visual
+check of the state of tasks within the project.</p>
 </div>
 <div id="tasks" class="section level3">
 <h3>Tasks</h3>
-<p>A task is a self contained unit of requested work. Each task is represented as a card on the Board view and these cards can be moved around the board by clicking and dragging. This is where our collaborators play a key role, we want participation and encourage folks to move cards, set due dates and leave comments within each task to help keep everything on track. We are not asking for you to manage our projects, we are asking for participation in the planning process so we can meet your needs. To create a new task users should first find the <em>Template</em> task, which is usually at the top left of the board. Placing your mouse over this card will cause three dots to appear and clicking on those dots will provide options including the ability to duplicate a task. The image below gives you an idea of what it will look like in the board:</p>
+<p>A task is a self contained unit of requested work. Each task is
+represented as a card on the Board view and these cards can be moved
+around the board by clicking and dragging. This is where our
+collaborators play a key role, we want participation and encourage folks
+to move cards, set due dates and leave comments within each task to help
+keep everything on track. We are not asking for you to manage our
+projects, we are asking for participation in the planning process so we
+can meet your needs. To create a new task users should first find the
+<em>Template</em> task, which is usually at the top left of the board.
+Placing your mouse over this card will cause three dots to appear and
+clicking on those dots will provide options including the ability to
+duplicate a task. The image below gives you an idea of what it will look
+like in the board:</p>
 <center>
 <img src = "www/feature_create_task.png">
 </center>
-<p>We encourage users to duplicate a template because the templates have text and fields that are necessary for us to understand the feature, bug, or task. For a complete how to on tasks please click on <a href="https://asana.com/guide/get-started/begin/adding-assigning-tasks">this link</a>. You can’t really break anything, so feel free to try it out click on some things and create a task or two.</p>
+<p>We encourage users to duplicate a template because the templates have
+text and fields that are necessary for us to understand the feature,
+bug, or task. For a complete how to on tasks please click on <a
+href="https://asana.com/guide/get-started/begin/adding-assigning-tasks">this
+link</a>. You can’t really break anything, so feel free to try it out
+click on some things and create a task or two.</p>
 </div>
 </div>
 <div id="feature-requests" class="section level2">
 <h2>Feature Requests</h2>
-<p>Your board will always have a Feature Requests project. This is the place for inspiration, new ideas, discussion and planning new features, analyses or other cool ideas that you have. Need a new report, want more data checks or want a new plot then create a feature request. Feature requests are not special except they typically represent small changes to software or analyses and do not require new contracts or months of work. Regardless of the size of the idea we suspect that most large projects will begin life as a feature request. When creating a feature request it is important to duplicate the template in the Backlog column. The template contains a lot of information to help you put your desires in terms we can understand and act on. We often get told how to do, but more often we need to be told what and why. The feature request template task is shown below:</p>
+<p>Your board will always have a Feature Requests project. This is the
+place for inspiration, new ideas, discussion and planning new features,
+analyses or other cool ideas that you have. Need a new report, want more
+data checks or want a new plot then create a feature request. Feature
+requests are not special except they typically represent small changes
+to software or analyses and do not require new contracts or months of
+work. Regardless of the size of the idea we suspect that most large
+projects will begin life as a feature request. When creating a feature
+request it is important to duplicate the template in the Backlog column.
+The template contains a lot of information to help you put your desires
+in terms we can understand and act on. We often get told how to do, but
+more often we need to be told what and why. The feature request template
+task is shown below:</p>
 <center>
 <img src = "www/feature_task_template.png">
 </center>
-<p>When creating a task please take the time to read the text and then replace it with your reponse. Aside form the text please notice the tags such as priority and module. At the top of the task you can also propose a <em>Due Date</em> to help us understand not only the priority, but the timeline required.</p>
+<p>When creating a task please take the time to read the text and then
+replace it with your reponse. Aside form the text please notice the tags
+such as priority and module. At the top of the task you can also propose
+a <em>Due Date</em> to help us understand not only the priority, but the
+timeline required.</p>
 </div>
 <div id="bug-tracking" class="section level2">
 <h2>Bug Tracking</h2>
-<p>The <em>Bug Tracking</em> board provides a place to discuss unexpected software behavior. A bug is anytime the software does something unexpected, fails outright or does not otherwise produce the desired result. To fix a bug we need to understand not only what happened, but how the bug was produced and ideally we would be able to reproduce the error. If we can reproduce the error we can generally fix it in short order, but if we can’t make the error happen there isn’t much we can do. To help us better understand the bug you have detected please try to duplicate the bug template task shown below, read the text and replace the text with your thoughts.</p>
+<p>The <em>Bug Tracking</em> board provides a place to discuss
+unexpected software behavior. A bug is anytime the software does
+something unexpected, fails outright or does not otherwise produce the
+desired result. To fix a bug we need to understand not only what
+happened, but how the bug was produced and ideally we would be able to
+reproduce the error. If we can reproduce the error we can generally fix
+it in short order, but if we can’t make the error happen there isn’t
+much we can do. To help us better understand the bug you have detected
+please try to duplicate the bug template task shown below, read the text
+and replace the text with your thoughts.</p>
 <center>
 <img src = "www/feature_bug_template.png">
 </center>
-<p>It should be clear after comparing the bug report to a feature request that very different information is required in each scenario and these templates attempt to help guide your through this process.</p>
+<p>It should be clear after comparing the bug report to a feature
+request that very different information is required in each scenario and
+these templates attempt to help guide your through this process.</p>
 </div>
 <div id="permissions" class="section level2">
 <h2>Permissions</h2>
-<p>Our Asana boards are private to those individuals involved in a contract/relationship. We do not invite people to your board, you do. You can expect that members of the SpeedGoat team have access to your board and then one or two individuals are generally invited to the board from the agency. At this point board members can invite new people to the board. It is worth noting that access is not to all Projects within a Team by default. Team members can invite other team members or invite individuals to one project at a time. A detailed explanation of <a href="https://asana.com/guide/help/organizations/members">team permissions can be found here</a>.</p>
+<p>Our Asana boards are private to those individuals involved in a
+contract/relationship. We do not invite people to your board, you do.
+You can expect that members of the SpeedGoat team have access to your
+board and then one or two individuals are generally invited to the board
+from the agency. At this point board members can invite new people to
+the board. It is worth noting that access is not to all Projects within
+a Team by default. Team members can invite other team members or invite
+individuals to one project at a time. A detailed explanation of <a
+href="https://asana.com/guide/help/organizations/members">team
+permissions can be found here</a>.</p>
 </div>
 <div id="deep-dive" class="section level2">
 <h2>Deep Dive</h2>
-<p>The help documentation for Asana can be found at <a href="https://asana.com/guide">https://asana.com/guide</a>.</p>
+<p>The help documentation for Asana can be found at <a
+href="https://asana.com/guide">https://asana.com/guide</a>.</p>
 <hr />
-<p>Developed by Josh Nowak, <a href="https://www.speedgoat.io">SpeedGoat</a></p>
+<p>Developed by Josh Nowak, <a
+href="https://www.speedgoat.io">SpeedGoat</a></p>
 <p><img src = "www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162"></p>
 <p><br></p>
 <hr />
@@ -477,7 +535,7 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -495,7 +553,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -504,6 +562,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
@@ -516,7 +577,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

@@ -8,13 +8,17 @@ navbar:
     - text: "Manuals"
       menu:
         - text: "IPM"
-          href: user_manual.html
+          href: 01-ipm.html
+        - text: "Sightability"
+          href: 02-sight.html
         - text: "Survival"
-          href: survival_manual.html
+          href: 03-surv.html
+        - text: "Data Entry"
+          href: 04-dataentry.html
         - text: "CWD"
           href: cwd.html
-        - text: "Asana"
-          href: asana.html
+        - text: "Glossary"
+          href: 05-glossary.html
     - text: "Models"
       menu:
         - text: "Caribou"

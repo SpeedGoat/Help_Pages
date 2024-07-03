@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>SpeedGoat Help</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SpeedGoat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Manuals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-ipm.html">IPM</a>
+    </li>
+    <li>
+      <a href="02-sight.html">Sightability</a>
+    </li>
+    <li>
+      <a href="03-surv.html">Survival</a>
+    </li>
+    <li>
+      <a href="04-dataentry.html">Data Entry</a>
+    </li>
+    <li>
+      <a href="cwd.html">CWD</a>
+    </li>
+    <li>
+      <a href="05-glossary.html">Glossary</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jasper_ipm_description.html">Caribou</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="sight" class="section level1">
+<h1>Sightability</h1>
+<p>Sightability models estimate abundance in a unit by combining the
+number of animals that we have seen in aerial surveys with an estimated
+number of animals that we have NOT seen using detection probability
+models. These detection models consider ground vegetation, the animal’s
+activity, snow cover, and the size of the group of animals to determine
+the likelihood that an animal is seen with the interference of these
+variables.</p>
+<p><a href="#gl-stratum" style="color: #086e04;"><b>Stratum</b></a> are
+used to organize habitat subunits by how well they would work as habitat
+for the animal being surveyed. The “high” strata group represents
+subunits that contain the best habitat, “low” is the group that has the
+worst habitats, and “medium” falls in between. Subunits are determined
+by previous observations from biologists and snow cover.</p>
+<div id="sight-walk" class="section level2">
+<h2>Walkthrough</h2>
+<p>Using the Sightability tool can be split into two major processes:
+preparing data and reviewing outputs.</p>
+<div id="sight-prep" class="section level3">
+<h3>Preparing Data</h3>
+<p>To prepare the data, navigate to the Setup tab under the Sightability
+dropdown.</p>
+<center>
+<img src="www/sight_walk1.png" />
+</center>
+<p>Within the setup section, the User Inputs window decides which survey
+data you will load. Select your <a href="#gl-species"
+style="color: #086e04;"><b>Species</b></a>, <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a>, Survey Type (<a href="#gl-comp"
+style="color: #086e04;"><b>Composition</b></a> or <a
+href="#gl-sightabundance"
+style="color: #086e04;"><b>Sightability-Abundance</b></a>), <a
+href="#gl-year" style="color: #086e04;"><b>Year</b></a>, <a
+href="#gl-anfocus" style="color: #086e04;"><b>Analysis Focus</b></a>,
+and <a href="#gl-aircraft"
+style="color: #086e04;"><b>Aircraft/Model</b></a>. The data preview on
+the right side of the page will update as you adjust your settings.
+Check it as you make your choices in the User Inputs window, but you do
+not have to modify it any further.</p>
+<center>
+<img src="www/sight_walk2.png" />
+</center>
+<center>
+<img src="www/sight_walk3.png" />
+</center>
+<p>Once you are satisfied with your choices in the User Input window, go
+ahead and click <span style="color: #196eb0;"><b>Fit Model</b></span>.
+You will get a dialog box letting you know when the tool ran
+successfully.</p>
+</div>
+<div id="sight-look" class="section level3">
+<h3>Reviewing Outputs</h3>
+<p>Now that your data has been prepared you can go to the Tables tab,
+which is where you can view the output of your model.</p>
+<center>
+<img src="www/sight_walk4.png" />
+</center>
+<p>Navigate with the tabs along the top of the screen to check your
+estimates, survey design, detection, and covariates. You can also
+download your detection and estimation results as .csv files with <span
+style="color: #196eb0;"><b>Download</b></span> at the bottom of the
+table.</p>
+<center>
+<img src="www/sight_walk5.png" />
+</center>
+<p>To get a more detailed report of your model that includes the
+information in the Tables tab while keeping track of things like model
+settings, click the Build Report tab under Sightability. A prompt will
+appear asking you to download the report as an html file.</p>
+<center>
+<img src="www/sight_walk7.png" />
+</center>
+<center>
+<img src="www/ipm_walk9.png" />
+</center>
+<p>If you would like to upload the results of your model to an IPM
+database, you can click on the Admin tab.</p>
+<center>
+<img src="www/sight_walk6.png" />
+</center>
+<p><b>Edits here will change databases for everyone</b>. You can select
+the database that you want to upload your data to, as well as review the
+information that you will be uploading. Press <span
+style="color: #196eb0;"><b>Update DB</b></span> to add your selected
+results to a shared database.</p>
+<center>
+<img src="www/sight_walk8.png" />
+</center>
+</div>
+</div>
+<div id="sight-ref" class="section level2">
+<h2>Reference</h2>
+<div id="sight-setup" class="section level3">
+<h3>Setup</h3>
+<center>
+<img src="www/sight_setup1.png" />
+</center>
+<p>The setup tab is used to select which <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a> will be run through our
+model.</p>
+<p>Surveys will only appear in the preview window if they are a perfect
+match to all of the dropdown menus, so make sure to double check that
+you did not accidentally leave one of them as default if the survey you
+are looking for refuses to appear in the preview window.</p>
+<center>
+<img src="www/sight_setup2.png" />
+</center>
+<p>The User Inputs tab on the left side of the screen allows you to
+specify which data we will be analyzing. The species dropdown allows to
+to choose whether you are selecting elk surveys or mule deer surveys.
+The Analysis DAU dropdown selects which data analysis unit we will be
+analyzing. All <a href="#gl-dau" style="color: #086e04;"><b>DAU</b></a>
+are included as options for a survey, but this does not necessarily mean
+that surveys from all of them have been uploaded to the speedgoat
+database. If nothing appears in the preview window on the right side of
+the screen when you select a <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a>, then it means there is no data
+available. The Survey Type dropdown includes both <a href="#gl-comp"
+style="color: #086e04;"><b>composition</b></a> and <a
+href="#gl-sightabundance"
+style="color: #086e04;"><b>sightability-abundance</b></a> surveys. The
+<a href="#gl-year" style="color: #086e04;"><b>year</b></a> tab refers to
+which biological year the survey was carried out on. The <a
+href="#gl-anfocus" style="color: #086e04;"><b>Analysis Focus</b></a>
+dropdown determines what scale the analysis will be carried out within
+the DAU you selected. It works best if the analysis is carried out at
+the same scale that data is collected. <a href="#gl-aircraft"
+style="color: #086e04;"><b>Aircraft/Model</b></a> is more helpful with
+elk studies than mule deer studies, but it is helpful to know which
+aircraft flew your surveys no matter what.</p>
+<center>
+<img src="www/sight_setup3.png" />
+</center>
+</div>
+<div id="sight-table" class="section level3">
+<h3>Tables</h3>
+<center>
+<img src="www/sight_table1.png" />
+</center>
+<p>The Tables tab allows you to look at the output of your model run
+from Setup. The Estimates tab displays model outputs based on your
+survey information, including abundance estimates for all age and sex
+demographics as well as Male:Female and Young:Female ratio. You can
+search each row with the blank box at the top. The Survey Design tab
+gives model settings for reference, as well as the proportion of
+subunits sampled and the abundance estimate for the area that you
+selected in Setup. The Detection tab gives raw survey info that the
+model used for its estimates. Notice that the page of data being
+displayed is only one of many pages which you can navigate with the page
+list on the bottom right of the window. Use the download button at the
+bottom of the Estimates and Detections tabs to download those results as
+a .csv. The covariates tab gives you a glimpse into how our models work
+by showing the covariate options, their <a href="#gl-modelv"
+style="color: #086e04;"><b>model values</b></a>, and their <a
+href="#gl-beta" style="color: #086e04;"><b>beta</b></a>. This is not a
+table of outputs, but rather an insight as to how our model interprets
+the data you put into it. For example, while it would be tempting to
+spend precious time on a survey flight determining a specific snowcover
+percentage, a look at the covariates tab will tell you that snowcover is
+actually a categorical variable. Specifically, snowcover has three
+categories (1%-20%, 21%-79%, 80%-100%), which means that finding an
+exact percentage is a waste of time, since all values within the
+discrete categories will be treated the same. The reason you cannot see
+the 80-100% category on the covariates page is because of how our model
+interprets snowfall. Instead of three separate categories, all
+categories are in terms of the 80%-100% one. Our model does not think of
+the 1%-20% and 21-79% categories as independent, but as (80%-100%
+category) - (some value). 80%-100% is the default category, and default
+values are not displayed in the table.</p>
+</div>
+<div id="sight-report" class="section level3">
+<h3>Build Report</h3>
+<center>
+<img src="www/sight_report1.png" />
+</center>
+<p>The Build Report tab prints your model outputs from the tables tab
+and saves model settings. Clicking the Build Report button will open a
+popup menu, click the download button to download the file to your
+machine as an HTML file.</p>
+</div>
+<div id="sight-admin" class="section level3">
+<h3>Admin</h3>
+<center>
+<img src="www/sight_admin1.png" />
+</center>
+The Admin tab is used to upload the results of your model to your
+database of choice. The bottom window can be used to preview the data
+that you plan to upload, so make sure you are comfortable with your
+results before you upload them to the public database. Data you upload
+will be incorporated into everyone else’s model runs.
+<center>
+<img src="www/sight_admin2.png" />
+</center>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

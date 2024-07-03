@@ -1,0 +1,83 @@
+---
+title: ""
+author: ""
+pagetitle: "SpeedGoat Help"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    theme: flatly
+---
+
+# Glossary {#gl}
+
+###### Abundance {#gl-abundance -}
+The number of animals in a particular area. 
+
+###### Age Ratio {#gl-ageratio -}
+Also called the fawn doe ratio or calf cow ratio, this measures the proportion of females that have young. A population of deer with an age ratio of 0.75 means than each cow has a 75% chance of having a calf.
+
+###### Aircraft/Model {#gl-aircraft -}
+Elk sightability models include considerations for the craft that was actually flown to collect the survey.
+
+###### Analysis Focus {#gl-anfocus -}
+This option determines the base geographical unit of your analysis. Game Management is carried out at many spatial scales, the broadest of which being Data Analysis Units (DAUs) which are comprised of several smaller Game Management Units (GMU), which are themselves composed of subunits. subunits are organized into categories based on animal abundance (Low, Medium, High, Other) which are called Strata and help with organization of subunits.
+
+In the sightability tool on the website, "Area" refers to DAUs, or Data Analysis Units and a "Unit" specifically refers to a GMU, or Game Management unit.
+
+When you are using the tool, remember that each spatial scale is calculated with different factors in mind, so it is VERY IMPORTANT that the scale at which the surveys are collected and the scale at which the analysis is carried out are the same. For example, if a survey was flown to cover an entire GMU without consideration for individual subunits, then it would be inappropriate to run an analysis with subunit as your analysis focus.
+
+###### Automate Convergance {#gl-autoconv -}
+Automating convergence will ensure that your model will run enough Burnin Length and MCMC iterations for a sound estimate and error distribution. This may greatly increase the amount of time needed to run your model.
+
+###### Beta {#gl-beta -}
+The strength of each variable in the model itself. Categorical variables are represented by a range of binned values, but for the model to create an output it must be converted to a numerical value that modifies the default value. For example, the VegClass covariate changes how easy it is to see an animal. VegClasses differ in the amount that they can obscure vision, but you will notice the classes that obscure visions the most have a negative beta value, which tells us that they have a negative impact on our probability to see an animal.
+
+###### Burnin Length {#gl-burnin -}
+Burnin Length helps us focus our model. When the MCMC model begins running, it checks possible outputs of the model and begins sampling them to determine the probability that they will represent our data. The model uses past sampled points to try and get an idea of where the highest probabilities are, but when the model first begins running it does not have the luxury of these reference points. This sets up the model's first few samples to be more randomly chosen than any part of the process, meaning that the beginning samples are less likely to be on high probability outputs. Burnin Length helps us get around this by deleting the first runs of the MCMC model after it's done running.
+
+###### Composition Survey {#gl-comp -}
+A sightability survey which focuses on sex ratios
+
+###### DAU (Data Analysis Unit) {#gl-dau -}
+Data Analysis Units separate each state or province into distinct management areas for each species. Each one has a specific name and is further divided into subunits, which allow even more specificity.
+
+###### GRTS (Generalized Random Tesselation Stratified) {#gl-GRTS -}
+GRTS decides where to sample during geographic surveys by ensuring that the locations are both randomly placed and evenly spaced. This helps avoid bias while making sure that no parts of the study area are undersampled.
+
+###### Hunter Effort {#gl-huntereffort -}
+A metric to measure hunting pressure on game animals. It is either measured by the total number of hunters in the field over the course of a season or the total number of days spent hunting over the course of a season by all hunters.
+
+###### MCMC Iterations {#gl-mcmciter -}
+MCMC iterations are simply a measure of how many different times the model will test the probability of different model outputs. More sampling allows the model to consider more options and therefore can increase the chance that the model will find the outputs with the highest likelihoods, but it also may not be necessary and will make the tool take longer to run.
+
+###### Model Value {#gl-modelv -}
+The numerical value that the model assigns to different covariates. In the User Interface, different covariates have helpful labels like "Snow Cover", but in actual programming language this would make code unnecessarily long and complicated, so the computer stores them as simple numerical values instead.
+
+###### Sex Ratio {#gl-sexratio -}
+In a group of animals the sex ratio allows us to compare what proportion of that group is male and female. Management agencies will manipulate the balance between these two groups for different purposes, like tipping the scales toward females to encourage population growth or toward males to encourage trophy animals. Sometimes the ratio is given numerically, where a 1 means there are an equal number of males and females, greater than 1 means more males than females, and less than 1 means more females than males.
+
+###### Sightability-Abundance Survey {#gl-sightabundance -}
+A sightability survey which focuses on abundance
+
+###### Species {#gl-species -}
+In our tools, a box labeled 'species' determines the type of animal(s) that you would like to include in your analysis or plot. The species included for each tool are those chosen by the customer for management purposes, so common names will be used.
+
+###### Stratum {#gl-stratum -}
+Stratum are used to organize habitat subunits by how well they would work as habitat for the animal being surveyed. The “high” strata group represents subunits that contain the best habitat, “low” is the group that has the worst habitats, and “medium” falls in between. Subunits are determined by previous observations from biologists and snow cover.
+
+###### Survival {#gl-surv -}
+The probability that an animal will stay alive for a human-selected period of time. For example, if yearly survival for does in a management unit is calculated to be 0.6 for the year 2008, then that means that 60% of the does in that unit that were alive at the beginning of the year were alive at the end of the year.
+
+###### Thinning Rate {#gl-thin -}
+Thinning rate helps us save memory by deleting entries from the model's stored runs. We can think of this as a sort of browser history for the model, showing us how it got its answer. In this case there are literally tens of thousands of steps, so deleting a small (or large) proportion of that history and using what is left still gives us an idea of the model's actions without taking up nearly as much memory. The slider is the percentage of model iterations that will be deleted once the modeling process is complete.
+
+###### Unit {#gl-unit -}
+Another name for a GMU, or Game Management Unit, which is a subdivision of a state or province with its own unique hunting and game regulations. 
+
+###### Year {#gl-year -}
+The year tab refers to which Biological year the survey was carried out on. Years are referred to as “2016-2017” rather than just one year because surveys are generally carried out between late fall and early spring, which straddles new year’s. This makes more sense to keep related surveys together because two surveys may be flown only three weeks apart but still be lumped into separate years. If you are having trouble finding your survey, make sure you select the right time range, since a survey flown in 2016 could be in the 2015-2016 group OR the 2016-2017 group.
+

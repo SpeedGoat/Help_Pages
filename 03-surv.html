@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>SpeedGoat Help</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SpeedGoat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Manuals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-ipm.html">IPM</a>
+    </li>
+    <li>
+      <a href="02-sight.html">Sightability</a>
+    </li>
+    <li>
+      <a href="03-surv.html">Survival</a>
+    </li>
+    <li>
+      <a href="04-dataentry.html">Data Entry</a>
+    </li>
+    <li>
+      <a href="cwd.html">CWD</a>
+    </li>
+    <li>
+      <a href="05-glossary.html">Glossary</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jasper_ipm_description.html">Caribou</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="surv" class="section level1">
+<h1>Survival</h1>
+<p>Survival is something often calculated in a classroom setting, but
+the practicalities of calculating it in the real world can make things
+very tricky. Small sample sizes that can be found in collar studies can
+present a few problems, even if everything goes to plan. For example, if
+a collar study is composed of 4 animals, 3 of them may die (maybe it was
+deer opener). However, our Kaplan Meier model is telling us that 75% of
+our deer are dead! Is survival for that year really 0.25? Unless you
+know of some catastrophe this is very unlikely. Our five deer study
+poses another problem, which is that the hypothetical 0.2 we produced
+earlier is one of only 5 possible survival rates that can come from this
+population!(0, 0.25, 0.5 ,0.75, 1) If true survival is 0.66, then we
+have a problem because there is no possible way to get that output from
+our model. All of this is assuming that things go to plan, things
+like:<br />
+</p>
+<p>All deer were collared at the same time<br />
+All dead deer were found with their collar<br />
+All collars worked for the duration of the study<br />
+</p>
+<p>Things often do not go to plan, and so more complicated models need
+to be created to account for for the reality of survival studies. Our
+models can consider mortality and survival data from the entire
+state/province as well as information from your particular DAU of
+interest. If there is sufficient data for your target DAU the model will
+use that information, but in the case that there isn’t enough, the model
+can dip into a state-wide database that includes all capture and
+mortality data for the month in order to fill in gaps. Keep this in mind
+when your data is scarce, as the less data you have the closer your
+estimate will come to the state average.</p>
+<div id="surv-walk" class="section level2">
+<h2>Walkthrough</h2>
+<p>Using the Survival tool can be split into three major processes:
+preparing data, reviewing outputs, and uploading data.</p>
+<div id="surv-prep" class="section level3">
+<h3>Preparing Data</h3>
+<p>The first step is to obtain your data. Click Setup under the Survival
+dropdown.</p>
+<center>
+<img src="www/surv_walk1.png" />
+</center>
+<p>You will notice a window at the top left of the page labeled
+Overview, and this is where you will decide the <a href="#gl-species"
+style="color: #086e04;"><b>species</b></a> and <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a> that we will be analyzing. Once
+you have made your selections, click <span
+style="color: #196eb0;"><b>Download Data</b></span> at the bottom of the
+window.</p>
+<center>
+<img src="www/surv_walk2.png" />
+</center>
+<p>Now that your data is loaded, feel free to look it over using the
+windows to the right of and below the Overview window.</p>
+<center>
+<img src="www/surv_walk3.png" />
+</center>
+<center>
+<img src="www/surv_walk4.png" />
+</center>
+<p>Once you have looked over your data, we can move on to the next step
+by navigating to the Subset tab next to the Overview one. Select the sex
+and age of the animals you will be analyzing, as well as the years your
+analysis will take place.</p>
+<center>
+<img src="www/surv_walk5.png" />
+</center>
+<p>We will next move on to the Structure window, where we will determine
+our model type, as well as our variances for sex, time, and space. We
+can also choose to censor harvest mortalities.</p>
+<center>
+<img src="www/surv_walk6.png" />
+</center>
+<p>Once you have made your choices, you can move on to the Run tab.
+Under the run tab, decide your <a href="#gl-burnin"
+style="color: #086e04;"><b>Burnin Length</b></a>, <a href="#gl-mcmciter"
+style="color: #086e04;"><b>MCMC Iterations</b></a>, and <a
+href="#gl-thin" style="color: #086e04;"><b>Thinning Rate</b></a>, then
+decide whether or not you would like to <a href="#gl-autoconv"
+style="color: #086e04;"><b>Automate Convergence</b></a>. We have
+provided a set of defaults that are well suited for a variety of
+situations, but feel free to modify the values to better fit your
+situation.</p>
+<center>
+<img src="www/surv_walk7.png" />
+</center>
+<p>When you are done, click <span style="color: #196eb0;"><b>Fit
+Model</b></span> to run the analysis. You will get a dialog box when the
+process is done.</p>
+</div>
+<div id="surv-look" class="section level3">
+<h3>Reviewing Outputs</h3>
+<p>Once your model is finished running, you can view the results in the
+Tables tab.</p>
+<center>
+<img src="www/surv_walk8.png" />
+</center>
+<p>Note that the first ten entries that appear when you open this page
+are only a small fraction of the total. Use the page list on the bottom
+right to see more pages of data or use <span
+style="color: #196eb0;"><b>Show (10) Entries</b></span> on the top left
+to make more entries appear on each page.</p>
+<center>
+<img src="www/surv_walk9.png" />
+</center>
+</div>
+<div id="surv-upload" class="section level3">
+<h3>Uploading Data</h3>
+<p>If you’re feeling confident about your results, you can add them to
+an IPM database using the Admin tab, but understand that <b>edits you
+make here will edit the database for everyone</b>, which is why we ask
+that you’re confident about your results before you add them.</p>
+<center>
+<img src="www/surv_walk10.png" />
+</center>
+<p>The IPM Data window allows you to select which database will receive
+your data, and the Estimates tab allows you to review the data that you
+will be adding to the database. <span style="color: #196eb0;"><b>Update
+DB</b></span> will upload your data when you are ready.</p>
+<center>
+<img src="www/surv_walk11.png" />
+</center>
+</div>
+</div>
+<div id="surv-ref" class="section level2">
+<h2>Reference</h2>
+<div id="surv-setup" class="section level3">
+<h3>Setup</h3>
+<center>
+<img src="www/surv_setup1.png" />
+</center>
+<p>The window on the top left determines how your model is going to be
+run.</p>
+<center>
+<img src="www/surv_setup2.png" />
+</center>
+<p>The Overview tab is where you select and download the data that you
+will be modeling for survival by <a href="#gl-species"
+style="color: #086e04;"><b>species</b></a> of animal and <a
+href="#gl-dau" style="color: #086e04;"><b>DAU</b></a> that the data was
+collected in. The only way to preview the data before modeling is to
+download it, and you will have to redownload if you want to change the
+species or DAU before you run the model. If data is pulled from your
+agencies database via an API, the data must be modified at the source.
+PopR only loads the data temporarily using an API, and so cannot modify
+it. The Subset tab lets you decide which sections of your elk or mule
+deer population will be included in your output, and over what period of
+time. The default inputs are Sex:All, Age:A.</p>
+<p>In the Structure tab, we get to make some decisions about our model.
+The Default inputs work well for a variety of situations and you should
+keep them if you plan on putting the results of this model into an IPM
+dataset. They are: Model Type: Known Fate, Covariates: None, Censor
+Fate(s): None, Model sexes as: Same, Model time as: Constant, Model
+space as: Constant. Use the known fate model if you know when every
+animal died in your study, but the multi-state model can make estimates
+even if you censored animals. You can also select which covariates will
+be included in your analysis here. Censor fate allows you to remove
+animals from your analysis who were harvested by hunters. Simply click
+the Harvest option. Model Sexes can get survival metrics of both males
+and females separately by setting it to Different. You can model both
+time and space as both constant and monthly.</p>
+<p>The Run tab gives direction to our actual modeling process. The given
+settings control how we deal with the many thousands of times the model
+must run to calibrate itself. Adjust your <a href="#gl-burnin"
+style="color: #086e04;"><b>Burnin Length</b></a>, <a href="#gl-mcmciter"
+style="color: #086e04;"><b>MCMC Iterations</b></a> and <a
+href="#gl-thin" style="color: #086e04;"><b>Thinning Rate</b></a>. The
+bottom of the window gives an option for <a href="#gl-autoconv"
+style="color: #086e04;"><b>Automating Convergence</b></a> as well. You
+may adjust any of these factors, but the defaults are appropriate for a
+wide variety of situations.</p>
+<p>Use the window at the top right of the page to check for data issues.
+The window to the top right is very useful for troubleshooting. The
+capture tab displays the ID of an animal that that has bad or no XY data
+in the capture tab at the bottom of the page. The Mortalities tab
+displays Mortality data whose XY data needs fixing as well. To get a
+better idea of which points are causing a problem, points can be clicked
+on the map to get their IDs as well.</p>
+<center>
+<img src="www/surv_setup3.png" />
+</center>
+<p>The window at the bottom of the page works as a preview for data that
+is gathered by the download data button. All of the tables can be
+downloaded with the corresponding button, but only data that is
+displayed will be downloaded, so make sure <span
+style="color: #196eb0;"><b>Show (10) Entries</b></span> is changed to
+“All” if you would like to get your entire output in one .csv. All of
+the tables can be searched using the empty slots at the top of each
+column. Searching the ID column can be very helpful for finding data
+that is also displayed in the window that shows entries with damaged xy
+data.</p>
+<center>
+<img src="www/surv_setup4.png" />
+</center>
+</div>
+<div id="surv-admin" class="section level3">
+<h3>Admin</h3>
+<center>
+<img src="www/surv_admin1.png" />
+</center>
+<p>The Admin tab is a straightforward page used to upload the results of
+your model to your database of choice. The bottom window can be used to
+preview the data that you plan to upload, so make sure you are
+comfortable with your results before you upload them to the public
+database. Data you upload will be incorporated into everyone else’s
+model runs, so be careful.</p>
+<center>
+<img src="www/surv_admin2.png" />
+</center>
+</div>
+<div id="surv-tables" class="section level3">
+<h3>Tables</h3>
+<center>
+<img src="www/surv_tables1.png" />
+</center>
+<p>Once your model is finished running, you can view the results in the
+Tables tab. Note that the first ten entries that appear when you open
+this page are only a small fraction of the total. Use the page list on
+the bottom right to see more pages of data or use the dropdown menu on
+the top left to make more entries appear on each page.</p>
+</div>
+<div id="surv-indiv" class="section level3">
+<h3>Individuals</h3>
+<center>
+<img src="www/surv_indiv1.png" />
+</center>
+<p>If the window in the setup tab shows that there may be problems with
+XY data in capture and mortalities, this is the place to go. After
+selecting your individual of interest at the top of the page, the bottom
+two windows show all data available about that particular animal.</p>
+<center>
+<img src="www/surv_indiv2.png" />
+</center>
+<p>Raw data, is on the left. The two tabs in this window are Raw and Raw
+minimized, which removes some of the columns from the Raw tab to make it
+easier to navigate. The empty box at the top of each column is a keyword
+search.</p>
+<center>
+<img src="www/surv_indiv3.png" />
+</center>
+<p>Data formatted by speedgoat for our model is on the right. There are
+many columns, so make sure to scroll horizontally to make sure you see
+them all. The empty text box at the top of each column allows you to do
+a keyword search.</p>
+<center>
+<img src="www/surv_indiv4.png" />
+</center>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

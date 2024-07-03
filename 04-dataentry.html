@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>SpeedGoat Help</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SpeedGoat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Manuals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-ipm.html">IPM</a>
+    </li>
+    <li>
+      <a href="02-sight.html">Sightability</a>
+    </li>
+    <li>
+      <a href="03-surv.html">Survival</a>
+    </li>
+    <li>
+      <a href="04-dataentry.html">Data Entry</a>
+    </li>
+    <li>
+      <a href="cwd.html">CWD</a>
+    </li>
+    <li>
+      <a href="05-glossary.html">Glossary</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jasper_ipm_description.html">Caribou</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="de" class="section level1">
+<h1>Data Entry</h1>
+<p>This tool handles/organizes the information that makes all of the
+other tools work. More specifically, the data entry tool allows you to
+design sightability and composition surveys for a <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a> and then enter/upload the results
+to the speedgoat database. Remember that the surveys you create and edit
+are the same ones that everyone on your team has access to, so any edit
+you make will change the data that EVERYONE is using for analysis.</p>
+<div id="de-walk" class="section level2">
+<h2>Walkthrough</h2>
+<p>The data entry tool can be broken into two sections: creating a
+survey and then filling it with data.</p>
+<div id="de-create" class="section level3">
+<h3>Creating a Survey</h3>
+<p>You can use the data entry tab to design aerial surveys and then
+populate them with data, which can then be used to inform our survival,
+sightability, and IPM tools.</p>
+<p>To begin designing a survey click the Survey Design tab.</p>
+<center>
+<img src="www/de_walk1.png" />
+</center>
+<p>When you click the page, a popup window labeled Survey Design Setup
+should appear, prompting you for your survey <a href="#gl-species"
+style="color: #086e04;"><b>species</b></a>, <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a>, survey type (<a href="#gl-comp"
+style="color: #086e04;"><b>composition</b></a> or <a
+href="#gl-sightabundance"
+style="color: #086e04;"><b>sightability-abundance</b></a>)), and survey
+<a href="#gl-year" style="color: #086e04;"><b>year</b></a>.</p>
+<center>
+<img src="www/de_walk2.png" />
+</center>
+<p>If this window does not pop up click the gear icon on the bottom left
+of the page and select <span style="color: #196eb0;"><b>Setup
+Wizard</b></span>.</p>
+<center>
+<img src="www/de_walk3.png" />
+</center>
+<p>Once you have made your choices, a second window will appear asking
+you whether you would like to import strata from a past survey or start
+from scratch.</p>
+<center>
+<img src="www/de_walk4.png" />
+</center>
+<p>Either way, clicking <span
+style="color: #196eb0;"><b>Finish</b></span> on this second window will
+close the popup and leave you with a map and a table. The map and the
+table both act as options to assign subunits to different strata, which
+is the next step in the process.</p>
+<center>
+<img src="www/de_walk5.png" />
+</center>
+<p>To use the map, choose which <a href="#gl-stratum"
+style="color: #086e04;"><b>strata</b></a> you would like to assign to
+the subunits with the small window labeled Click Subunit to Assign to:
+and then once your strata is selected, all subunits you click on the map
+will be assigned to that strata.</p>
+<center>
+<img src="www/de_walk6.png" />
+</center>
+<p>You can also assign subunits to different strata by using the table
+to manually change the <a href="#gl-stratum"
+style="color: #086e04;"><b>Stratum</b></a> column from Other to
+whichever is appropriate for your experiment. Note that any subunit left
+in the Other strata will not be sampled.</p>
+<center>
+<img src="www/de_walk7.png" />
+</center>
+<p>After you have selected the subunits you plan to fly, click <span
+style="color: #196eb0;"><b>Sample Subunits</b></span> to decide the time
+to fly each subunit, the proportion of the High strata that will be
+sampled, and whether you will sample randomly or using <a
+href="#gl-grts" style="color: #086e04;"><b>GRTS</b></a>.</p>
+<center>
+<img src="www/de_walk8.png" />
+</center>
+<center>
+<img src="www/de_walk9.png" />
+</center>
+<p>When you are satisfied with the survey you have designed, Click <span
+style="color: #196eb0;"><b>Save Survey</b></span> to save your
+edits.</p>
+<p>When your survey is actually flown, return to the survey and check
+the Surveyed box to signal which subunits (of the units selected to be
+part of the survey earlier) have actually been flown. Click <span
+style="color: #196eb0;"><b>Save Survey</b></span> to save your
+edits.</p>
+</div>
+<div id="de-popul" class="section level3">
+<h3>Populating the Survey</h3>
+<p>Now that you have generated at least one survey, it is time to learn
+about the Mule Deer Composition, Mule Deer Abundance, and Elk Surveys
+tabs under the Data Entry dropdown, which are all used to populate
+surveys created in the Survey Design tab.</p>
+<center>
+<img src="www/de_walk10.png" />
+</center>
+<p>It is important to understand that data added here will modify the
+surveys for <b>everyone</b>, so make sure you are comfortable with this
+information being used for analysis if you add it here.</p>
+<p>All three of these tools use the same framework for data entry. To
+make sure you’re adding info to the right survey you can either enter
+the relevant info in the upper window or use <span
+style="color: #196eb0;"><b>click here</b></span> the top of the page,
+which allows you to hunt for your survey manually.</p>
+<center>
+<img src="www/de_walk11.png" />
+</center>
+<p>When you have selected your survey, you can add data manually one
+entry at a time, which is done by clicking any of the dropdown arrows in
+the cells of the Observations table. If you already have a spreadsheet
+prepared, you can also copy and paste that information right into the
+table.</p>
+<center>
+<img src="www/de_walk12.png" />
+</center>
+<p>While you make these edits, the area that normally displays <span
+style="color: #196eb0;"><b>Add GPS Data</b></span> and <span
+style="color: #196eb0;"><b>Totals</b></span> changes to <span
+style="color: #196eb0;"><b>Save</b></span> and <span
+style="color: #196eb0;"><b>Discard</b></span>. Either accept your
+changes and save them to your database with <span
+style="color: #196eb0;"><b>Save</b></span> or revert any changes with
+<span style="color: #196eb0;"><b>Discard</b></span> and the original
+options will reappear.</p>
+<center>
+<img src="www/de_walk13.png" />
+</center>
+<p>You can add latitude and longitude information to the database with
+<span style="color: #196eb0;"><b>Add GPS Data</b></span> on the right
+side of the page, which will be visible as long as you do not have any
+unsaved edits to your Observations table. Follow the instructions of the
+popup window that appears for final import instructions.</p>
+<center>
+<img src="www/de_walk14.png" />
+</center>
+<p>When you are finished, make sure you click <span
+style="color: #196eb0;"><b>Save</b></span> to make your changes
+permanent. <span style="color: #196eb0;"><b>Attached Files</b></span>
+allows you to add files like maps and raw data for future reference and
+redundancy.</p>
+<center>
+<img src="www/de_walk15.png" />
+</center>
+</div>
+</div>
+<div id="de-ref" class="section level2">
+<h2>Reference</h2>
+<div id="de-surdes" class="section level3">
+<h3>Survey Design</h3>
+<center>
+<img src="www/de_survdes1.png" />
+</center>
+<p>Though someone with intimate knowledge of an area can bring a survey
+team to an area where there are a relatively high abundance of deer,
+surveys that return very low abundance are important as well in order to
+fully inform the model. The model assumes density to be constant, so if
+you only fly subunits where you know there are a lot of animals, that
+amount of animals will be extrapolated to your entire <a href="#gl-dau"
+style="color: #086e04;"><b>DAU</b></a> and can lead to overestimation,
+since it is now represented by only its busiest areas. If you want to
+track how many subunits are going to be included in your analysis, click
+<span style="color: #196eb0;"><b>Survey Details</b></span> below the
+subunit selector table. This menu will remind you of your model settings
+while showing how many subunits have been selected for survey and how
+many have actually been surveyed.</p>
+<center>
+<img src="www/de_survdes2.png" />
+</center>
+<p>Make sure you stick to your predetermined selections if you want the
+model to return relevant information, since it is expecting data from
+these areas and these and these areas only. If the survey design menu
+does not pop up when you open the tool, then click the gear button on
+the bottom left of the page and select Setup Wizard from the options in
+the popup menu.</p>
+</div>
+<div id="de-mdcomp" class="section level3">
+<h3>Mule Deer Composition</h3>
+<center>
+<img src="www/de_mdcomp1.png" />
+</center>
+<p>This software can only use data from aerial surveys. There is an
+option to select the aircraft that was flown for the survey which is
+considered for elk sightability surveys but NOT mule deer surveys, so
+it’s best to just leave that box as “Nothing Selected”. You can either
+begin entering survey data manually in the window labelled New, which
+will begin adding your data to a new survey, or you can edit surveys
+that you have already created with the link above the table labeled
+“click here”. The Attached Files button Allows you to add files that you
+would like to be kept with your observations such as a reference
+map.</p>
+<center>
+<img src="www/de_mdcomp2.png" />
+</center>
+<p>The Observations window allows you to view and alter your data. The
+Add GPS Data button on the right side of the window allows you to easily
+import latitude and longitude from .csv files, and the Totals button
+brings up a window summarizing your data.</p>
+<center>
+<img src="www/de_mdcomp3.png" />
+</center>
+</div>
+<div id="de-mdabun" class="section level3">
+<h3>Mule deer Abundance</h3>
+<center>
+<img src="www/de_mdabun1.png" />
+</center>
+<p>This software can only use data from aerial surveys. There is an
+option to select the aircraft that was flown for the survey which is
+considered for elk sightability surveys but NOT mule deer surveys, so
+it’s best to just leave that box as “Nothing Selected”. You can either
+begin entering survey data manually in the window labelled New, which
+will begin adding your data to a new survey, or you can edit surveys
+that you have already created with the link above the table labeled
+“click here”. The Attached Files button Allows you to add files that you
+would like to be kept with your observations such as a reference
+map.</p>
+<center>
+<img src="www/de_mdcomp2.png" />
+</center>
+<p>The Observations window allows you to view and alter your data. The
+Add GPS Data button on the right side of the window allows you to easily
+import latitude and longitude from .csv files, and the Totals button
+brings up a window summarizing your data.</p>
+<center>
+<img src="www/de_mdcomp3.png" />
+</center>
+</div>
+<div id="de-esurv" class="section level3">
+<h3>Elk Surveys</h3>
+<center>
+<img src="www/de_esurv1.png" />
+</center>
+<p>Like the mule deer survey tools, this software can only use data from
+aerial surveys. Elk sightability models are different than the mule deer
+ones since they incorporate the make of the survey plane in the model.
+Either enter data from your survey directly to begin adding data to a
+new survey or by clicking the “Click Here” under the page header. The
+Attached Files button Allows you to add files that you would like to be
+kept with your observations such as a reference map.</p>
+<center>
+<img src="www/de_esurv2.png" />
+</center>
+<p>The Observations window allows you to view and alter your data. The
+Add GPS Data button on the right side of the window allows you to easily
+import latitude and longitude from .csv files, and the Totals button
+brings up a window summarizing your data.</p>
+<center>
+<img src="www/de_esurv3.png" />
+</center>
+</div>
+<div id="de-summ" class="section level3">
+<h3>Summary</h3>
+<center>
+<img src="www/de_summ1.png" />
+</center>
+<p>Be aware that the surveys displayed in the table when you first open
+the tool are not all of the data available, use the page navigation at
+the bottom right of the window to see more. If you are looking for a
+particular survey or location, the blank boxes at the top of every
+column can be used to search all entries. Just type something in the box
+and it will automatically find entries in the column that match what you
+type. This section is great for reviewing/checking raw data since you
+can download any of the survey data as a .csv.</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
