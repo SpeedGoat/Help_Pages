@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="" />
+
+
+<title>SpeedGoat Help</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SpeedGoat</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Manuals
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-ipm.html">IPM</a>
+    </li>
+    <li>
+      <a href="02-sight.html">Sightability</a>
+    </li>
+    <li>
+      <a href="03-surv.html">Survival</a>
+    </li>
+    <li>
+      <a href="04-dataentry.html">Data Entry</a>
+    </li>
+    <li>
+      <a href="cwd.html">CWD</a>
+    </li>
+    <li>
+      <a href="05-glossary.html">Glossary</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Models
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="jasper_ipm_description.html">Caribou</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="gl" class="section level1">
+<h1>Glossary</h1>
+<div id="gl-abundance" class="section level6 unnumbered">
+<h6 class="unnumbered">Abundance</h6>
+<p>The number of animals in a particular area.</p>
+</div>
+<div id="gl-ageratio" class="section level6 unnumbered">
+<h6 class="unnumbered">Age Ratio</h6>
+<p>Also called the fawn doe ratio or calf cow ratio, this measures the
+proportion of females that have young. A population of deer with an age
+ratio of 0.75 means than each cow has a 75% chance of having a calf.</p>
+</div>
+<div id="gl-aircraft" class="section level6 unnumbered">
+<h6 class="unnumbered">Aircraft/Model</h6>
+<p>Elk sightability models include considerations for the craft that was
+actually flown to collect the survey.</p>
+</div>
+<div id="gl-anfocus" class="section level6 unnumbered">
+<h6 class="unnumbered">Analysis Focus</h6>
+<p>This option determines the base geographical unit of your analysis.
+Game Management is carried out at many spatial scales, the broadest of
+which being Data Analysis Units (DAUs) which are comprised of several
+smaller Game Management Units (GMU), which are themselves composed of
+subunits. subunits are organized into categories based on animal
+abundance (Low, Medium, High, Other) which are called Strata and help
+with organization of subunits.</p>
+<p>In the sightability tool on the website, “Area” refers to DAUs, or
+Data Analysis Units and a “Unit” specifically refers to a GMU, or Game
+Management unit.</p>
+<p>When you are using the tool, remember that each spatial scale is
+calculated with different factors in mind, so it is VERY IMPORTANT that
+the scale at which the surveys are collected and the scale at which the
+analysis is carried out are the same. For example, if a survey was flown
+to cover an entire GMU without consideration for individual subunits,
+then it would be inappropriate to run an analysis with subunit as your
+analysis focus.</p>
+</div>
+<div id="gl-autoconv" class="section level6 unnumbered">
+<h6 class="unnumbered">Automate Convergance</h6>
+<p>Automating convergence will ensure that your model will run enough
+Burnin Length and MCMC iterations for a sound estimate and error
+distribution. This may greatly increase the amount of time needed to run
+your model.</p>
+</div>
+<div id="gl-beta" class="section level6 unnumbered">
+<h6 class="unnumbered">Beta</h6>
+<p>The strength of each variable in the model itself. Categorical
+variables are represented by a range of binned values, but for the model
+to create an output it must be converted to a numerical value that
+modifies the default value. For example, the VegClass covariate changes
+how easy it is to see an animal. VegClasses differ in the amount that
+they can obscure vision, but you will notice the classes that obscure
+visions the most have a negative beta value, which tells us that they
+have a negative impact on our probability to see an animal.</p>
+</div>
+<div id="gl-burnin" class="section level6 unnumbered">
+<h6 class="unnumbered">Burnin Length</h6>
+<p>Burnin Length helps us focus our model. When the MCMC model begins
+running, it checks possible outputs of the model and begins sampling
+them to determine the probability that they will represent our data. The
+model uses past sampled points to try and get an idea of where the
+highest probabilities are, but when the model first begins running it
+does not have the luxury of these reference points. This sets up the
+model’s first few samples to be more randomly chosen than any part of
+the process, meaning that the beginning samples are less likely to be on
+high probability outputs. Burnin Length helps us get around this by
+deleting the first runs of the MCMC model after it’s done running.</p>
+</div>
+<div id="gl-comp" class="section level6 unnumbered">
+<h6 class="unnumbered">Composition Survey</h6>
+<p>A sightability survey which focuses on sex ratios</p>
+</div>
+<div id="gl-dau" class="section level6 unnumbered">
+<h6 class="unnumbered">DAU (Data Analysis Unit)</h6>
+<p>Data Analysis Units separate each state or province into distinct
+management areas for each species. Each one has a specific name and is
+further divided into subunits, which allow even more specificity.</p>
+</div>
+<div id="gl-GRTS" class="section level6 unnumbered">
+<h6 class="unnumbered">GRTS (Generalized Random Tesselation
+Stratified)</h6>
+<p>GRTS decides where to sample during geographic surveys by ensuring
+that the locations are both randomly placed and evenly spaced. This
+helps avoid bias while making sure that no parts of the study area are
+undersampled.</p>
+</div>
+<div id="gl-huntereffort" class="section level6 unnumbered">
+<h6 class="unnumbered">Hunter Effort</h6>
+<p>A metric to measure hunting pressure on game animals. It is either
+measured by the total number of hunters in the field over the course of
+a season or the total number of days spent hunting over the course of a
+season by all hunters.</p>
+</div>
+<div id="gl-mcmciter" class="section level6 unnumbered">
+<h6 class="unnumbered">MCMC Iterations</h6>
+<p>MCMC iterations are simply a measure of how many different times the
+model will test the probability of different model outputs. More
+sampling allows the model to consider more options and therefore can
+increase the chance that the model will find the outputs with the
+highest likelihoods, but it also may not be necessary and will make the
+tool take longer to run.</p>
+</div>
+<div id="gl-modelv" class="section level6 unnumbered">
+<h6 class="unnumbered">Model Value</h6>
+<p>The numerical value that the model assigns to different covariates.
+In the User Interface, different covariates have helpful labels like
+“Snow Cover”, but in actual programming language this would make code
+unnecessarily long and complicated, so the computer stores them as
+simple numerical values instead.</p>
+</div>
+<div id="gl-sexratio" class="section level6 unnumbered">
+<h6 class="unnumbered">Sex Ratio</h6>
+<p>In a group of animals the sex ratio allows us to compare what
+proportion of that group is male and female. Management agencies will
+manipulate the balance between these two groups for different purposes,
+like tipping the scales toward females to encourage population growth or
+toward males to encourage trophy animals. Sometimes the ratio is given
+numerically, where a 1 means there are an equal number of males and
+females, greater than 1 means more males than females, and less than 1
+means more females than males.</p>
+</div>
+<div id="gl-sightabundance" class="section level6 unnumbered">
+<h6 class="unnumbered">Sightability-Abundance Survey</h6>
+<p>A sightability survey which focuses on abundance</p>
+</div>
+<div id="gl-species" class="section level6 unnumbered">
+<h6 class="unnumbered">Species</h6>
+<p>In our tools, a box labeled ‘species’ determines the type of
+animal(s) that you would like to include in your analysis or plot. The
+species included for each tool are those chosen by the customer for
+management purposes, so common names will be used.</p>
+</div>
+<div id="gl-stratum" class="section level6 unnumbered">
+<h6 class="unnumbered">Stratum</h6>
+<p>Stratum are used to organize habitat subunits by how well they would
+work as habitat for the animal being surveyed. The “high” strata group
+represents subunits that contain the best habitat, “low” is the group
+that has the worst habitats, and “medium” falls in between. Subunits are
+determined by previous observations from biologists and snow cover.</p>
+</div>
+<div id="gl-surv" class="section level6 unnumbered">
+<h6 class="unnumbered">Survival</h6>
+<p>The probability that an animal will stay alive for a human-selected
+period of time. For example, if yearly survival for does in a management
+unit is calculated to be 0.6 for the year 2008, then that means that 60%
+of the does in that unit that were alive at the beginning of the year
+were alive at the end of the year.</p>
+</div>
+<div id="gl-thin" class="section level6 unnumbered">
+<h6 class="unnumbered">Thinning Rate</h6>
+<p>Thinning rate helps us save memory by deleting entries from the
+model’s stored runs. We can think of this as a sort of browser history
+for the model, showing us how it got its answer. In this case there are
+literally tens of thousands of steps, so deleting a small (or large)
+proportion of that history and using what is left still gives us an idea
+of the model’s actions without taking up nearly as much memory. The
+slider is the percentage of model iterations that will be deleted once
+the modeling process is complete.</p>
+</div>
+<div id="gl-unit" class="section level6 unnumbered">
+<h6 class="unnumbered">Unit</h6>
+<p>Another name for a GMU, or Game Management Unit, which is a
+subdivision of a state or province with its own unique hunting and game
+regulations.</p>
+</div>
+<div id="gl-year" class="section level6 unnumbered">
+<h6 class="unnumbered">Year</h6>
+<p>The year tab refers to which Biological year the survey was carried
+out on. Years are referred to as “2016-2017” rather than just one year
+because surveys are generally carried out between late fall and early
+spring, which straddles new year’s. This makes more sense to keep
+related surveys together because two surveys may be flown only three
+weeks apart but still be lumped into separate years. If you are having
+trouble finding your survey, make sure you select the right time range,
+since a survey flown in 2016 could be in the 2015-2016 group OR the
+2016-2017 group.</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
