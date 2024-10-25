@@ -23,7 +23,7 @@ output:
 This application provides tools for planning weighted surveillance sampling for chronic wasting disease (CWD), and estimating underlying prevelance after sampling has been completed. Models are available for white-tailed deer (*Odocoileus virginianus*), 
 mule deer (*Odocoileus hemionus*), and elk (*Cervus canadensis*) populations, and an additional model allows combining samples from elk and mule deer in a single analysis.
 
-Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](https://cpw.state.co.us/Documents/Research/WildlifeHealth/Publications/WeightedSurveillanceApproachCWD.pdf) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is imporant to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
+Weighted surveillance is based on the simple principle that within a population there exists heterogeneity among individuals with regard to disease risk. To maximize efficiency and potentially increase the likelihood of detecting new disease foci, weighted surveillance programs exploit this heterogeneity by focusing disease detection efforts in groups most at risk. The underlying methods were orginially developed by [Walsh et al. (2010)](https://cpw.state.co.us/Documents/Research/WildlifeHealth/Publications/WeightedSurveillanceApproachCWD.pdf) using a Frequentist statistical approach. These results were then refined and recast into a Bayesian statistical framework by [Heisey et al. (2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843). It is important to note that the use of weighted surveillance techniques requires that prior information is available to estimate heterogeneity in individual risk. A general discussion of CWD surveillance is given in [Walsh et al. (2012)](https://pubs.usgs.gov/of/2012/1036/pdf/ofr2012_1036.pdf).
 
 The first tool, called [**Design**](#design-tool), is used for planning weighted surveillance activities. The user specifies how much confidence they need, and what minimum prevalence they would like to detect in the group selected as a reference class (e.g., I would like a 95% confidence of detecting at least one case if the prevalence is at least 1%). This information then provides the total number of points required to meet the specified confidence for the chosen minimum prevalence. The user can then select from the potential sources of surveillance samples, and vary the number of samples arising from each source. This provides a means of setting sampling objectives for each source to ensure the requisite number of points is reached. This tool can also be used to evaluate in real-time how close a program is to achieving its goal given the number of samples collected from each source to date.
 
@@ -37,7 +37,7 @@ The techniques and theory underpinning them used in this application are describ
 
 ## Help
 
-Blue question marks in the various sections of the app link directly to the relevant sections of this document. If you have trouble with the site or have questions that aren't covered here you can contact Josh, the site's maintainer, by clicking on the lifering in the top-right of your screen. You can also issue a [*bug report*]("https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&labels=bug&template=bug_report.md&title=") by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a [*feature request*]("https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&labels=&template=feature_request.md&title="). The help icons are shown in the image below:
+Blue question marks in the various sections of the app link directly to the relevant sections of this document. If you have trouble with the site or have questions that aren't covered here you can contact SpeedGoat, the site's maintainer, by clicking on the life ring in the top-right of your screen. You can also issue a [*bug report*](https://github.com/SpeedGoat/DiseaseMonitoring/issues/) by clicking on the bug icon in the header. Finally, if you have an idea for a new feature or analysis please let us know by clicking on the lightbulb icon and issuing a [*feature request*](https://github.com/SpeedGoat/DiseaseMonitoring/issues/). The help icons are shown in the image below:
 
 <img src = "./www/weightedsurveil/cwd_help.png">
 
@@ -186,13 +186,50 @@ Click the *Download Report* button to generate a full report of your data. The r
 <br>
 <br>
 
+## Batch Estimation
+
+The batch estimation tool is designed to help users who need to estimates from many models. The tool has a friendly spreadsheet that may be downloaded by the user to enter their data and then uploaded to the site for estimation. To use batch estimation begin by clicking the *Batch Estimation* link in the sidebar. 
+
+### Template
+
+The first step is to download the batch estimation template. The template is a spreadsheet that can be used to enter data for multiple models. The template can be downloaded by clicking the *Download Template* link in the box titled *Upload Data*.
+
+<img src = "./www/weightedsurveil/cwd_batch_template.png">
+
+The template spreadsheet has 4 sheets: *Data*, *Priors*, *Instructions*, and *Example*. The *Data* sheet is where you will enter your data. The *Priors* sheet is where you can view the priors that will be used in the model. The *Instructions* sheet provides guidance on how to use the template. The *Example* sheet provides an example dataset.
+
+The Data sheet has 7 columns that align with the models expectations and how other aspects of the website function. The first column *Batch* is used to group samples. Samples with the same value in the *Batch* column will be estimated together. The *Species* column is used to specify the species of the samples. The *Collection Method* column is used to specify the method used to collect the samples. The *Age* and *Sex* columns are used to specify the age and sex of animals sampled. The *Samples* column is used to specify the number of negative samples obtained for the combination of species, collection method, age, and sex. This column allows only whole numbers greater than or equal to 0. Finally the *Test* column is used to specify the diagnostic test to be used. Enter *Default* to use the default test. If a custom test is required then specify that in the website and enter the name of the test in the *Test* column exactly as it is in the website. For more information about diagnostic tests see the [Diagnostic Tests](#diagnostic-tests) section.    
+
+Note when entering data that not all combinations of species, collection method, age, and sex are valid. If any invalid combinations are present in your data when you upload it the website will issue a warning. Those entries with invalid combinations or those entries for which no prior exists will be removed prior to running any models.
+
+When the data are entered and all entries checked upload the spreadsheet by clicking the *Browse...* button and selecting the file from your computer. Once the file is selected click the *Open* button to upload the data. The website will check the data and issue a warning if any invalid entries are present. The data will be shown to the user under the *Data* tab, while errors will be shown under the *Sample Class Issues* and *Test Issues* tabs.
+
+### Model Selection
+
+After the data are uploaded the user must select the model to be used for estimation. The model can be selected by clicking the *Select Model* dropdown and selecting the desired model. The user can adjust model settings and MCMC parameters as needed. The settings are the same as those described in the [Model Settings](#model-settings) section.
+
+<img src = "./www/weightedsurveil/cwd_batch_setup.png">
+
+### Running a Batch Model
+
+When satisfied that all inputs are correct click the *Fit Model* button to run the model. The website will run the model and display the results in a newly created *Output* link in the sidebar on the left. The website will also display a progress bar to show the user how far along the model is in the estimation process and notify the user of success or failure of the model runs.
+
+### Batch Estimation Output
+
+After the model has run the website will display a results table and report generation option in the *Output* tab located in the sidebar on the left. Users are encouraged to download the results as a report by navigating to the Reports tab at the top of their screen and clicking the *Download Report* button. Reports will delivered as a compressed file with one report per batch that contains all of the plots and interpretation users expect from a single model run. For more details on the outputs see the [Estimates Table](#estimates-table), [Output Plots](#output-plots), and [Interpretation](#interpretation) sections.  
+
+<img src = "./www/weightedsurveil/cwd_batch_results.png">
+
+<br>
+<br>
+
 ## Suggestions
 
-If you have suggestions or corrections that you would like to propose to this document please either file a bug report at [this link](https://github.com/SpeedGoat/DiseaseMonitoring) or make a contribution and issue a pull request via the [Huh/Help_Pages](https://github.com/SpeedGoat/Help_Pages) GitHub repository.
+If you have suggestions or corrections that you would like to propose to this document please either file a bug report at [this link](https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&labels=bug&template=bug_report.md&title=) or make a contribution and issue a pull request via the [Huh/Help_Pages](https://github.com/SpeedGoat/Help_Pages) GitHub repository.
 
 ***
 
-Developed by Josh Nowak, [SpeedGoat](https://www.speedgoat.io)
+Developed by [SpeedGoat](https://www.speedgoat.io)
 
 [<img src = "./www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162">](https://www.speedgoat.io)
 
