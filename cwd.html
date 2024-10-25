@@ -14,7 +14,7 @@
 
 <title>SpeedGoat Help</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -411,7 +411,7 @@ et al. (2010)</a> using a Frequentist statistical approach. These
 results were then refined and recast into a Bayesian statistical
 framework by <a
 href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0089843">Heisey
-et al. (2014)</a>. It is imporant to note that the use of weighted
+et al. (2014)</a>. It is important to note that the use of weighted
 surveillance techniques requires that prior information is available to
 estimate heterogeneity in individual risk. A general discussion of CWD
 surveillance is given in <a
@@ -465,14 +465,14 @@ al. (2012)</a>.</p>
 <h2>Help</h2>
 <p>Blue question marks in the various sections of the app link directly
 to the relevant sections of this document. If you have trouble with the
-site or have questions that aren’t covered here you can contact Josh,
-the site’s maintainer, by clicking on the lifering in the top-right of
-your screen. You can also issue a <a
-href="%22https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&amp;labels=bug&amp;template=bug_report.md&amp;title=%22"><em>bug
+site or have questions that aren’t covered here you can contact
+SpeedGoat, the site’s maintainer, by clicking on the life ring in the
+top-right of your screen. You can also issue a <a
+href="https://github.com/SpeedGoat/DiseaseMonitoring/issues/"><em>bug
 report</em></a> by clicking on the bug icon in the header. Finally, if
 you have an idea for a new feature or analysis please let us know by
 clicking on the lightbulb icon and issuing a <a
-href="%22https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&amp;labels=&amp;template=feature_request.md&amp;title=%22"><em>feature
+href="https://github.com/SpeedGoat/DiseaseMonitoring/issues/"><em>feature
 request</em></a>. The help icons are shown in the image below:</p>
 <p><img src = "www/weightedsurveil/cwd_help.png"></p>
 <p><br> <br></p>
@@ -696,17 +696,103 @@ available in html and Microsoft Word formats.</p>
 <p><br> <br></p>
 </div>
 </div>
+<div id="batch-estimation" class="section level2">
+<h2>Batch Estimation</h2>
+<p>The batch estimation tool is designed to help users who need to
+estimates from many models. The tool has a friendly spreadsheet that may
+be downloaded by the user to enter their data and then uploaded to the
+site for estimation. To use batch estimation begin by clicking the
+<em>Batch Estimation</em> link in the sidebar.</p>
+<div id="template" class="section level3">
+<h3>Template</h3>
+<p>The first step is to download the batch estimation template. The
+template is a spreadsheet that can be used to enter data for multiple
+models. The template can be downloaded by clicking the <em>Download
+Template</em> link in the box titled <em>Upload Data</em>.</p>
+<p><img src = "www/weightedsurveil/cwd_batch_template.png"></p>
+<p>The template spreadsheet has 4 sheets: <em>Data</em>,
+<em>Priors</em>, <em>Instructions</em>, and <em>Example</em>. The
+<em>Data</em> sheet is where you will enter your data. The
+<em>Priors</em> sheet is where you can view the priors that will be used
+in the model. The <em>Instructions</em> sheet provides guidance on how
+to use the template. The <em>Example</em> sheet provides an example
+dataset.</p>
+<p>The Data sheet has 7 columns that align with the models expectations
+and how other aspects of the website function. The first column
+<em>Batch</em> is used to group samples. Samples with the same value in
+the <em>Batch</em> column will be estimated together. The
+<em>Species</em> column is used to specify the species of the samples.
+The <em>Collection Method</em> column is used to specify the method used
+to collect the samples. The <em>Age</em> and <em>Sex</em> columns are
+used to specify the age and sex of animals sampled. The <em>Samples</em>
+column is used to specify the number of negative samples obtained for
+the combination of species, collection method, age, and sex. This column
+allows only whole numbers greater than or equal to 0. Finally the
+<em>Test</em> column is used to specify the diagnostic test to be used.
+Enter <em>Default</em> to use the default test. If a custom test is
+required then specify that in the website and enter the name of the test
+in the <em>Test</em> column exactly as it is in the website. For more
+information about diagnostic tests see the <a
+href="#diagnostic-tests">Diagnostic Tests</a> section.</p>
+<p>Note when entering data that not all combinations of species,
+collection method, age, and sex are valid. If any invalid combinations
+are present in your data when you upload it the website will issue a
+warning. Those entries with invalid combinations or those entries for
+which no prior exists will be removed prior to running any models.</p>
+<p>When the data are entered and all entries checked upload the
+spreadsheet by clicking the <em>Browse…</em> button and selecting the
+file from your computer. Once the file is selected click the
+<em>Open</em> button to upload the data. The website will check the data
+and issue a warning if any invalid entries are present. The data will be
+shown to the user under the <em>Data</em> tab, while errors will be
+shown under the <em>Sample Class Issues</em> and <em>Test Issues</em>
+tabs.</p>
+</div>
+<div id="model-selection" class="section level3">
+<h3>Model Selection</h3>
+<p>After the data are uploaded the user must select the model to be used
+for estimation. The model can be selected by clicking the <em>Select
+Model</em> dropdown and selecting the desired model. The user can adjust
+model settings and MCMC parameters as needed. The settings are the same
+as those described in the <a href="#model-settings">Model Settings</a>
+section.</p>
+<p><img src = "www/weightedsurveil/cwd_batch_setup.png"></p>
+</div>
+<div id="running-a-batch-model" class="section level3">
+<h3>Running a Batch Model</h3>
+<p>When satisfied that all inputs are correct click the <em>Fit
+Model</em> button to run the model. The website will run the model and
+display the results in a newly created <em>Output</em> link in the
+sidebar on the left. The website will also display a progress bar to
+show the user how far along the model is in the estimation process and
+notify the user of success or failure of the model runs.</p>
+</div>
+<div id="batch-estimation-output" class="section level3">
+<h3>Batch Estimation Output</h3>
+<p>After the model has run the website will display a results table and
+report generation option in the <em>Output</em> tab located in the
+sidebar on the left. Users are encouraged to download the results as a
+report by navigating to the Reports tab at the top of their screen and
+clicking the <em>Download Report</em> button. Reports will delivered as
+a compressed file with one report per batch that contains all of the
+plots and interpretation users expect from a single model run. For more
+details on the outputs see the <a href="#estimates-table">Estimates
+Table</a>, <a href="#output-plots">Output Plots</a>, and <a
+href="#interpretation">Interpretation</a> sections.</p>
+<p><img src = "www/weightedsurveil/cwd_batch_results.png"></p>
+<p><br> <br></p>
+</div>
+</div>
 <div id="suggestions" class="section level2">
 <h2>Suggestions</h2>
 <p>If you have suggestions or corrections that you would like to propose
 to this document please either file a bug report at <a
-href="https://github.com/SpeedGoat/DiseaseMonitoring">this link</a> or
-make a contribution and issue a pull request via the <a
+href="https://github.com/SpeedGoat/DiseaseMonitoring/issues/new?assignees=Huh&amp;labels=bug&amp;template=bug_report.md&amp;title=">this
+link</a> or make a contribution and issue a pull request via the <a
 href="https://github.com/SpeedGoat/Help_Pages">Huh/Help_Pages</a> GitHub
 repository.</p>
 <hr />
-<p>Developed by Josh Nowak, <a
-href="https://www.speedgoat.io">SpeedGoat</a></p>
+<p>Developed by <a href="https://www.speedgoat.io">SpeedGoat</a></p>
 <p><a
 href="https://www.speedgoat.io"><img src = "www/SG_Horizontal_Transparent_RGB.png" height = "122" width = "162"></a></p>
 <p><br></p>
