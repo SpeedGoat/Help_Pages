@@ -14,7 +14,7 @@
 
 <title>SpeedGoat Help</title>
 
-<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -501,6 +501,146 @@ as model specifications and fit.</p>
 <center>
 <img src="www/ipm_walk9.png" />
 </center>
+</div>
+</div>
+<div id="ipm-runs" class="section level2">
+<h2>Saved Runs</h2>
+<p>A model run can take a long time to fit, and its results are gone
+when you close the app. Saving a run keeps its setup, the data it was
+fit to, its results and its report, so you can come back to it, compare
+it with other runs, share it, or put it forward as your Model Run for
+Submission without fitting it again. Save run and Open saved run are in
+the IPM menu.</p>
+<div id="ipm-save" class="section level3">
+<h3>Saving a Run</h3>
+<p>Once a model has finished fitting, click <span
+style="color: #196eb0;"><b>Save run</b></span>. Give the run a name that
+sets it apart from your other runs, such as the harvest scenario it
+tests (for example “2027 antlerless harvest cut”), then click <span
+style="color: #196eb0;"><b>Save</b></span>. The name is how you will
+find the run later.</p>
+<p>Your saved runs are private to you. Other users don’t see them unless
+you share one (see below). Administrators can see every run in your
+agency’s project.</p>
+</div>
+<div id="ipm-open" class="section level3">
+<h3>Opening a Saved Run</h3>
+<p>Click <span style="color: #196eb0;"><b>Open saved run</b></span> to
+see your saved runs. The list shows the runs for the species and <a
+href="05-glossary.html#gl-dau" style="color: #086e04;"><b>DAU</b></a>
+selected on the Setup page; tick <b>Show all runs, not only this species
+and DAU</b> to see the rest. For each run the list shows:</p>
+<ul>
+<li><b>Name</b> and <b>Saved</b>: the run’s name and when it was
+saved.</li>
+<li><b>Species</b>, <b>DAU</b>, <b>Years</b>, <b>Model</b> and
+<b>Effort</b>: how the run was set up.</li>
+<li><b>R̂ &lt; 1.1</b>: how well the model converged (see <a
+href="#ipm-runs-rhat">Convergence</a> below).</li>
+<li><b>Submitted</b>: a ★ and the season, when the run is your Model Run
+for Submission.</li>
+<li><b>Shared by</b>: who shared the run with you, for a run someone
+else shared.</li>
+</ul>
+<p>Select a run and click <span
+style="color: #196eb0;"><b>Open</b></span>. Its results appear on the
+Plots and Tables pages and Build Report builds its report, all as they
+were when it was saved. Its setup goes back on the Setup page, including
+the harvest table, so you can change something and fit a new run from
+it.</p>
+<p>To delete runs, select one or more and click <span
+style="color: #196eb0;"><b>Delete</b></span>. Deleting a run you
+submitted doesn’t withdraw the submission.</p>
+</div>
+<div id="ipm-compare" class="section level3">
+<h3>Comparing Runs</h3>
+<p>The <b>Compare runs</b> page in the IPM menu puts saved runs side by
+side, for example to compare harvest scenarios. Choose runs for the
+species and DAU on the Setup page. The page plots the chosen output with
+one line per run, and a table gives each run’s settings and final-year
+estimates, measured against the first (oldest) run. Only saved runs can
+be compared, so save a run before comparing it.</p>
+</div>
+<div id="ipm-share" class="section level3">
+<h3>Sharing a Run</h3>
+<p>To give a colleague a copy of a run, select it in Open saved run,
+click <span style="color: #196eb0;"><b>Share</b></span>, and choose them
+by name or email. Only people in your agency’s project are listed.</p>
+<p>They get their own copy in their Open saved run list, marked with
+your name under Shared by. It’s theirs from then on: they can open,
+change, share or delete it, and nothing they do changes your run.</p>
+</div>
+<div id="ipm-submit" class="section level3">
+<h3>Model Run for Submission</h3>
+<p>When you have the run you want to put forward for a season, mark it
+as your <b>Model Run for Submission</b>. Select it in Open saved run,
+click <span style="color: #196eb0;"><b>Submit</b></span>, check the
+season and click <span style="color: #196eb0;"><b>Submit</b></span>.</p>
+<ul>
+<li><b>The season</b> defaults to the coming one: the species’ model
+year for today, plus one. A run submitted in November 2026 or January
+2027 is for the 2027 season. You can change it before you submit.</li>
+<li><b>One per species, DAU and season.</b> You have one Model Run for
+Submission for each species, DAU and season. Submitting another run for
+the same species, DAU and season replaces your earlier submission, and
+the dialog tells you which one it replaces. The replaced submission is
+not kept.</li>
+<li><b>A submission is a frozen copy.</b> Changing or deleting the run
+afterwards doesn’t change what you submitted.</li>
+<li><b>To withdraw a submission</b>, select the run, click <span
+style="color: #196eb0;"><b>Withdraw submission</b></span> and choose the
+season. The run itself stays in your saved runs.</li>
+</ul>
+<p>Your submitted runs show a ★ and the season in the Submitted column.
+Once an administrator locks a season, its submissions can no longer be
+submitted, replaced or withdrawn; the Submit dialog says when a season
+is locked.</p>
+</div>
+<div id="ipm-runs-rhat" class="section level3">
+<h3>Convergence: R̂ &lt; 1.1</h3>
+<p>The R̂ &lt; 1.1 column gives the share of the model’s estimates whose
+R̂ (R-hat) is below 1.1, the convergence measure the IPM analysis reports
+use. Only years with data are counted; projected years have no data
+behind them and are left out. The closer to 100%, the better the model
+converged. A low share means the model may not have converged: run it
+again with a longer <a href="05-glossary.html#gl-burnin"
+style="color: #086e04;"><b>Burnin Length</b></a> or more <a
+href="05-glossary.html#gl-mcmciter" style="color: #086e04;"><b>MCMC
+Iterations</b></a>, and check the Rhat values on the Tables page.</p>
+</div>
+<div id="ipm-dau-version" class="section level3">
+<h3>Runs From an Older DAU Version</h3>
+<p>DAU boundaries are sometimes redrawn. Each redraw creates a new DAU
+version, and every DAU in it gets a new identity, even one whose name
+and number didn’t change. The Setup page always lists the current
+version’s DAUs.</p>
+<p>A run fit before a redraw is still saved, and the run list shows the
+version it belongs to, for example “Example Unit 101 (DAU version of
+2021-08-31)”. Because it no longer matches a current DAU, it’s left out
+of the list for the Setup page’s DAU; Open saved run says how many such
+runs there are, and <b>Show all runs</b> lists them.</p>
+<p>You can open such a run to see its results, plots and report as they
+were saved, but <b>it can’t be fit again as it was</b>. The app says so
+when you open it, and shows a warning on the Plots and Tables pages. Its
+settings go back on the Setup page, except the DAU: choose a current
+DAU, and the model will be fit to that DAU’s data as it is today.</p>
+</div>
+<div id="ipm-runs-admin" class="section level3">
+<h3>For Administrators</h3>
+<p>Administrators see every user’s saved runs in the project, with a
+<b>Saved by</b> column, and get a <span
+style="color: #196eb0;"><b>Submissions</b></span> button in Open saved
+run. It lists every user’s Model Run for Submission for a season, by
+user, species and DAU, with each run’s convergence and when it was
+submitted.</p>
+<ul>
+<li><b>Open</b> a submission to see its results and build its report, as
+with any saved run.</li>
+<li><span style="color: #196eb0;"><b>Lock / unlock season</b></span>
+stops users from submitting, replacing or withdrawing for that season,
+once its submissions are final. Administrators can still change them.
+Click it again to unlock the season.</li>
+</ul>
 </div>
 </div>
 <div id="ipm-ref" class="section level2">
