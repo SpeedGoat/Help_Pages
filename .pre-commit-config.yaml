@@ -1,0 +1,33 @@
+# spdgt-guard-version: 2
+# Canonical .pre-commit-config.yaml for a SpeedGoat APP repo (PHP/Laravel, Shiny, API).
+# Copy to the repo root as `.pre-commit-config.yaml`, then run install-guard.sh.
+#
+# The secret scan and nothing else, deliberately. .pre-commit-config.yaml in this repo
+# is the R-PACKAGE config — roxygenize, lintr, parsable-R, deps-in-desc — none of which
+# applies to a PHP app, and where an app already has its own linter (GrumPHP on
+# count-web) restating it here would run every check twice.
+#
+# install-guard.sh will not invent this file, because the hook set differs by repo type
+# and guessing wrong is worse than refusing. It vendors gitleaks-staged.sh either way,
+# and a vendored scan with no config runs nothing at all — `audit-repos.sh --here`
+# reports exactly that, which is how the gap was found on a Laravel app.
+#
+# The block below must stay identical to the one install-guard.sh appends, so a repo
+# ends up the same whether the file was copied from here or wired by the installer.
+# test-install-guard.sh asserts that.
+repos:
+  - repo: local
+    hooks:
+      # Wraps gitleaks so findings warn until a cutoff date and block after it —
+      # see the header of gitleaks-staged.sh for why. Uses the gitleaks on PATH
+      # (brew install gitleaks); the upstream `gitleaks` hook id builds from source,
+      # needs a Go toolchain, and cannot express the grace period.
+      #
+      # verbose: true matters. pre-commit hides output from passing hooks, and during
+      # the warning window this hook passes — without it the warning is never seen.
+      - id: gitleaks-staged
+        name: Detect hardcoded secrets (warns until cutoff, then blocks)
+        entry: ../spdgt-build-templates/gitleaks-staged.sh
+        language: system
+        pass_filenames: false
+        verbose: true
