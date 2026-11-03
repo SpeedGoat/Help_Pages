@@ -158,24 +158,6 @@ The table at the bottom of the page gives another way to preview the data you lo
 
 <center>![](./www/ipm_setup7.png)</center>
 
-### Database Management {#ipm-dbmgmt}
-
-<center>![](./www/ipm_db1.png)</center>
-
-The DB Mgmt tab creates, deletes and edits databases.The tools may be minimized, but to open them for use just click on the plus sign on the right side of the box containing the tool. Press it again to minimize it. Note that because databases are shared between users, edits here will change databases for EVERYONE. Data losses and changes will be permanent if you do not back up your data. You can also use the Create window to make a new database. NOTE: for some users this feature is only available for administrators and you may need to contact your administrator to create a new database or delete or edit an existing entry.
-
-When using the Create window you can paste data from a spreadsheet app like Excel. You can also start off with data from any existing database, which you can select under the Historic Data box. once the data is loaded, you can filter the entries by usinf the blank box at the top of each column as a keyword search bar. Make sure to give your new database a name, and then click the create database button to add a database to the Speedgoat server! You can also use the download tool to get the data you have loaded into our servers as a .csv.
-
-<center>![](./www/ipm_db2.png)</center>
-
-The Delete DB tool will delete the database you select from the server. Deleting it here will delete it for everyone, so make sure that your data is backed up and that nobody is still working on a database before you delete it.
-
-<center>![](./www/ipm_db3.png)</center>
-
-The Edit tool allows you to add and delete rows of data from the database selected in the menu at the top of the tool. None of the edits you make will be applied until the Save Changes button is clicked, but once that button is clicked changes will be applied for everyone that uses that database.
-
-<center>![](./www/ipm_db4.png)</center>
-
 ### Plots {#ipm-plot}
 
 <center>![](./www/ipm_plot2.png)</center>
