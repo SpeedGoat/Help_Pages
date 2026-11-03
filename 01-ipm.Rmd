@@ -66,6 +66,70 @@ Simply click on the tool and then click the download prompt on the popup window.
 
 <center>![](./www/ipm_walk9.png)</center>
 
+## Saved Runs {#ipm-runs}
+
+A model run can take a long time to fit, and its results are gone when you close the app. Saving a run keeps its setup, the data it was fit to, its results and its report, so you can come back to it, compare it with other runs, share it, or put it forward as your Model Run for Submission without fitting it again. Save run and Open saved run are in the IPM menu.
+
+### Saving a Run {#ipm-save}
+
+Once a model has finished fitting, click [<b>Save run</b>]{style="color: #196eb0;"}. Give the run a name that sets it apart from your other runs, such as the harvest scenario it tests (for example "2027 antlerless harvest cut"), then click [<b>Save</b>]{style="color: #196eb0;"}. The name is how you will find the run later.
+
+Your saved runs are private to you. Other users don't see them unless you share one (see below). Administrators can see every run in your agency's project.
+
+### Opening a Saved Run {#ipm-open}
+
+Click [<b>Open saved run</b>]{style="color: #196eb0;"} to see your saved runs. The list shows the runs for the species and [<b>DAU</b>](05-glossary.html#gl-dau){style="color: #086e04;"} selected on the Setup page; tick <b>Show all runs, not only this species and DAU</b> to see the rest. For each run the list shows:
+
+* <b>Name</b> and <b>Saved</b>: the run's name and when it was saved.
+* <b>Species</b>, <b>DAU</b>, <b>Years</b>, <b>Model</b> and <b>Effort</b>: how the run was set up.
+* <b>R&#770; < 1.1</b>: how well the model converged (see [Convergence](#ipm-runs-rhat) below).
+* <b>Submitted</b>: a &#9733; and the season, when the run is your Model Run for Submission.
+* <b>Shared by</b>: who shared the run with you, for a run someone else shared.
+
+Select a run and click [<b>Open</b>]{style="color: #196eb0;"}. Its results appear on the Plots and Tables pages and Build Report builds its report, all as they were when it was saved. Its setup goes back on the Setup page, including the harvest table, so you can change something and fit a new run from it.
+
+To delete runs, select one or more and click [<b>Delete</b>]{style="color: #196eb0;"}. Deleting a run you submitted doesn't withdraw the submission.
+
+### Comparing Runs {#ipm-compare}
+
+The <b>Compare runs</b> page in the IPM menu puts saved runs side by side, for example to compare harvest scenarios. Choose runs for the species and DAU on the Setup page. The page plots the chosen output with one line per run, and a table gives each run's settings and final-year estimates, measured against the first (oldest) run. Only saved runs can be compared, so save a run before comparing it.
+
+### Sharing a Run {#ipm-share}
+
+To give a colleague a copy of a run, select it in Open saved run, click [<b>Share</b>]{style="color: #196eb0;"}, and choose them by name or email. Only people in your agency's project are listed.
+
+They get their own copy in their Open saved run list, marked with your name under Shared by. It's theirs from then on: they can open, change, share or delete it, and nothing they do changes your run.
+
+### Model Run for Submission {#ipm-submit}
+
+When you have the run you want to put forward for a season, mark it as your <b>Model Run for Submission</b>. Select it in Open saved run, click [<b>Submit</b>]{style="color: #196eb0;"}, check the season and click [<b>Submit</b>]{style="color: #196eb0;"}.
+
+* <b>The season</b> defaults to the coming one: the species' model year for today, plus one. A run submitted in November 2026 or January 2027 is for the 2027 season. You can change it before you submit.
+* <b>One per species, DAU and season.</b> You have one Model Run for Submission for each species, DAU and season. Submitting another run for the same species, DAU and season replaces your earlier submission, and the dialog tells you which one it replaces. The replaced submission is not kept.
+* <b>A submission is a frozen copy.</b> Changing or deleting the run afterwards doesn't change what you submitted.
+* <b>To withdraw a submission</b>, select the run, click [<b>Withdraw submission</b>]{style="color: #196eb0;"} and choose the season. The run itself stays in your saved runs.
+
+Your submitted runs show a &#9733; and the season in the Submitted column. Once an administrator locks a season, its submissions can no longer be submitted, replaced or withdrawn; the Submit dialog says when a season is locked.
+
+### Convergence: R&#770; < 1.1 {#ipm-runs-rhat}
+
+The R&#770; < 1.1 column gives the share of the model's estimates whose R&#770; (R-hat) is below 1.1, the convergence measure the IPM analysis reports use. Only years with data are counted; projected years have no data behind them and are left out. The closer to 100%, the better the model converged. A low share means the model may not have converged: run it again with a longer [<b>Burnin Length</b>](05-glossary.html#gl-burnin){style="color: #086e04;"} or more [<b>MCMC Iterations</b>](05-glossary.html#gl-mcmciter){style="color: #086e04;"}, and check the Rhat values on the Tables page.
+
+### Runs From an Older DAU Version {#ipm-dau-version}
+
+DAU boundaries are sometimes redrawn. Each redraw creates a new DAU version, and every DAU in it gets a new identity, even one whose name and number didn't change. The Setup page always lists the current version's DAUs.
+
+A run fit before a redraw is still saved, and the run list shows the version it belongs to, for example "Example Unit 101 (DAU version of 2021-08-31)". Because it no longer matches a current DAU, it's left out of the list for the Setup page's DAU; Open saved run says how many such runs there are, and <b>Show all runs</b> lists them.
+
+You can open such a run to see its results, plots and report as they were saved, but <b>it can't be fit again as it was</b>. The app says so when you open it, and shows a warning on the Plots and Tables pages. Its settings go back on the Setup page, except the DAU: choose a current DAU, and the model will be fit to that DAU's data as it is today.
+
+### For Administrators {#ipm-runs-admin}
+
+Administrators see every user's saved runs in the project, with a <b>Saved by</b> column, and get a [<b>Submissions</b>]{style="color: #196eb0;"} button in Open saved run. It lists every user's Model Run for Submission for a season, by user, species and DAU, with each run's convergence and when it was submitted.
+
+* <b>Open</b> a submission to see its results and build its report, as with any saved run.
+* [<b>Lock / unlock season</b>]{style="color: #196eb0;"} stops users from submitting, replacing or withdrawing for that season, once its submissions are final. Administrators can still change them. Click it again to unlock the season.
+
 ## Reference {#ipm-ref}
 
 ### Setup {#ipm-setup}
@@ -93,24 +157,6 @@ You can explore your graphs in this section with the pan and two zoom features o
 The table at the bottom of the page gives another way to preview the data you loaded in the Overview tab. Use the blank column headers to look through your data with their keyword search function. You can page through your data with the previous and next buttons at the bottom of the page.
 
 <center>![](./www/ipm_setup7.png)</center>
-
-### Database Management {#ipm-dbmgmt}
-
-<center>![](./www/ipm_db1.png)</center>
-
-The DB Mgmt tab creates, deletes and edits databases.The tools may be minimized, but to open them for use just click on the plus sign on the right side of the box containing the tool. Press it again to minimize it. Note that because databases are shared between users, edits here will change databases for EVERYONE. Data losses and changes will be permanent if you do not back up your data. You can also use the Create window to make a new database. NOTE: for some users this feature is only available for administrators and you may need to contact your administrator to create a new database or delete or edit an existing entry.
-
-When using the Create window you can paste data from a spreadsheet app like Excel. You can also start off with data from any existing database, which you can select under the Historic Data box. once the data is loaded, you can filter the entries by usinf the blank box at the top of each column as a keyword search bar. Make sure to give your new database a name, and then click the create database button to add a database to the Speedgoat server! You can also use the download tool to get the data you have loaded into our servers as a .csv.
-
-<center>![](./www/ipm_db2.png)</center>
-
-The Delete DB tool will delete the database you select from the server. Deleting it here will delete it for everyone, so make sure that your data is backed up and that nobody is still working on a database before you delete it.
-
-<center>![](./www/ipm_db3.png)</center>
-
-The Edit tool allows you to add and delete rows of data from the database selected in the menu at the top of the tool. None of the edits you make will be applied until the Save Changes button is clicked, but once that button is clicked changes will be applied for everyone that uses that database.
-
-<center>![](./www/ipm_db4.png)</center>
 
 ### Plots {#ipm-plot}
 
